@@ -1,9 +1,12 @@
-function setup(){
-  createCanvas(400,400);
-}
+function setup() {
 
-function draw(){
-  background(220);
-  //ellipse(x,y,width,height);
-   ellipse(30,30,50,50);
-}
+    createCanvas(200,200);
+    background(100);
+    textSize(20);
+    noStroke();
+
+    let words = RiTa.tokenize("The elephant took a bite!")
+    for (let i=0; i < words.length; i++) {
+        text(words[i], 50, 50 + i*20);
+    }
+  }
