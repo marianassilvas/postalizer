@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'HelveticaNeue';
+  font-weight: bold;
+  src: url('webfonts/HelveticaNeue-Bold-02.ttf') format('truetype');
+}
+
+*{
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+
+  font-family: 'HelveticaNeue';
+  font-weight: bold;
+}
