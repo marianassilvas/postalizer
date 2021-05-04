@@ -1,11 +1,26 @@
 let pressed = true;
-let phrase;
+var phrase ;
 let words;
+
+
+var cnv;
+
+function centerCanvas() {
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+  cnv.position(x, y);
+}
 
 function setup() {
 
-  createCanvas(1000, 600);
+  cnv = createCanvas(1000, 600);
+  centerCanvas();
+  background(255, 0, 200);
 
+}
+
+function windowResized() {
+  centerCanvas();
 }
 
 function draw() {
@@ -14,7 +29,8 @@ function draw() {
   fill(255);
   textSize(30);
 
-  phrase = "Hello, how are you today?";
+
+  phrase =  "<? php echo json_encode($message) ?>" ;
   words = RiTa.pos(phrase);
 
   text(phrase, 50, 100, 1000, 30);

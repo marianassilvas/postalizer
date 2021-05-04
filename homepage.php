@@ -14,9 +14,17 @@
 </head>
 
 <body>
-  <h1>
-    Postalizer
-  </h1>
+
+  <h1>Postalizer</h1>
+  <h2>
+    <?php
+    include 'form.php';
+    ?>
+</h2>
+
+  <section id="postcard">
+
+  </section>
 
 </body>
 
