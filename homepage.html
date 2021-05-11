@@ -1,64 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>Teste Postalizer</title>
+	<title></title>
 
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
-  <link rel="stylesheet" href="homepage.css">
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
 
-  <style type="text/css">
-  #canvas-container {
-    /*display: none;*/
-    opacity: 0;
-    transition: opacity 2s;
-  }
-</style>
+	<style type="text/css">
+		#canvas-container {
+			/*display: none;*/
+			opacity: 0;
+			transition: opacity 2s;
+		}
+	</style>
 
 </head>
-
 <body>
-
-  <!--<h1>Postalizer</h1>-->
-
-    <label for="name">Number:</label>
-    <input type="text" id="msg" name="msg"><br><br>
-	  <button type="button" id="btn">Submit</button><br><br>
-
-  <div id="canvas-container">
+	<input type="text" id="msg" name="msg"><br><br>
+	<button type="button" id="btn">draw</button><br><br>
+	<div id="canvas-container">
 	<div>
-
 </body>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/rita"></script>
-  <script type="first.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="sketch.js"></script>
+<script type="text/javascript">
 
-  <script type="text/javascript">
+	var msg = "";
 
-  var msg = "";
-  var phrase = "";
+	function processRita() {
 
+	}
 
-  /*function lovelyRita(p){
+	function processMsg(m) {
+		//call rita
+		//call grama
+		// ....
+		//m = processRita(m)
+		updateCard(m);
+		/*$('#canvas-container').css("display","block");*/
+		$('#canvas-container').css("opacity",1);
+	}
 
-      var words = RiTa.pos(p);
+	$("#btn").click(function() {
+	  msg = $("#msg").val();
+	  console.log(msg);
+	  processMsg(msg);
+	});
 
-      text(p, 50, 100, 1000, 30);
-      //if (pressed) text(words, 50, 200, 30, 30);
-  }*/
-
-  function processMsg(m){
-    updatePostal(m);
-    $('#canvas-container').css("opacity",1);
-  }
-
-  $("#btn").click(function() {
-  msg = $("#msg").val();
-  console.log(msg);
-  processMsg(msg);});
-
-  </script>
-
+</script>
 </html>
