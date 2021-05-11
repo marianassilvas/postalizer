@@ -1,45 +1,41 @@
-let pressed = true;
-var phrase ;
-let words;
+//let pressed = true;
 
 
-var cnv;
-
-function centerCanvas() {
+/*function centerCanvas() {
   var x = (windowWidth - width) / 2;
   var y = (windowHeight - height) / 2;
   cnv.position(x, y);
-}
+  cnv.size(100);
+}*/
 
 function setup() {
 
-  cnv = createCanvas(1000, 600);
-  centerCanvas();
-  background(255, 0, 200);
-
-}
-
-function windowResized() {
-  centerCanvas();
+  let cnv = createCanvas(1000, 600);
+  cnv.parent('canvas-container');
+  //centerCanvas();
+  noLoop();
 }
 
 function draw() {
 
   background(0);
-  fill(255);
-  textSize(30);
-
-
-  phrase =  "<? php echo json_encode($message) ?>" ;
-  words = RiTa.pos(phrase);
-
-  text(phrase, 50, 100, 1000, 30);
-  if (pressed) text(words, 50, 200, 30, 30);
+  ellipse(50,50,80,80);
 
 }
 
-function mousePressed() {
+function updatePostal(m) {
+  background(0);
+  ellipse(100, 100, m * 2, m * 2);
+
+}
+
+/*function windowResized() {
+  centerCanvas();
+}*/
+
+
+/*function mousePressed() {
 
   pressed = !pressed;
 
-}
+}*/
