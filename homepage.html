@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title></title>
 
@@ -14,38 +15,50 @@
 	</style>
 
 </head>
+
 <body>
 	<input type="text" id="msg" name="msg"><br><br>
+	<input type="text" id="rem" name="remetente"><br><br>
+	<input type="text" id="dest" name="destinatario"><br><br>
+	<input type="text" id="texto" name="texto"><br><br>
 	<button type="button" id="btn">draw</button><br><br>
+
 	<div id="canvas-container">
-	<div>
+		<div>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="sketch.js"></script>
 <script type="text/javascript">
-
 	var msg = "";
+	var rem = "";
+	var dest = "";
+	var texto = "";
 
 	function processRita() {
 
 	}
 
-	function processMsg(m) {
+	function processMsg(m, r, d, t) {
 		//call rita
 		//call grama
 		// ....
 		//m = processRita(m)
-		updateCard(m);
+		updateCard(m, r, d, t);
 		/*$('#canvas-container').css("display","block");*/
-		$('#canvas-container').css("opacity",1);
+		$('#canvas-container').css("opacity", 1);
 	}
 
 	$("#btn").click(function() {
-	  msg = $("#msg").val();
-	  console.log(msg);
-	  processMsg(msg);
-	});
 
+		msg = $("#msg").val();
+		rem = $("#rem").val();
+		dest = $("#dest").val();
+		texto = $("#texto").val();
+		console.log(msg, rem, dest, texto);
+		processMsg(msg, 'from ' + rem, 'dear, ' + dest, texto);
+
+	});
 </script>
+
 </html>
