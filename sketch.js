@@ -54,8 +54,12 @@ function updateCard(raio, r, d, t) {
   text(t, grid_cols[0], grid_rows[10]);
   pop();
 
-
+  push();
   fill(200,0,200);
-  ellipse(random(raio,width-raio), random(raio,height-raio), raio * 2, raio * 2);
+  ellipse(100, 100, raio * 2, raio * 2);
+  pop();
+
+  /* Monoespacejada algoritmo que vai ter uma aproximação da distância de uma porção de textFont
+  regra de três simples (200px 30caracteres, 15 por 15) String*/
 
 }
