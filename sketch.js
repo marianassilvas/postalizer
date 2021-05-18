@@ -50,16 +50,28 @@ function updateCard(raio, r, d, t) {
   text(d, grid_cols[0], grid_rows[2]);
 
   push();
-  textSize(140);
-  text(t, grid_cols[0], grid_rows[10]);
+  textSize(70);
+  text(t, grid_cols[0], grid_rows[4]);
+
+  var tamanho_texto;
+  tamanho_texto = textWidth(t);
+  console.log(tamanho_texto);
+
+  if(tamanho_texto>=width){
+    console.log('texto grande');
+    
+  }
+
   pop();
 
   push();
   fill(200,0,200);
-  ellipse(100, 100, raio * 2, raio * 2);
+  ellipseMode(CENTER);
+  ellipse(random(raio,width-raio), random(raio,height-raio), raio * 2, raio * 2);
   pop();
 
   /* Monoespacejada algoritmo que vai ter uma aproximação da distância de uma porção de textFont
-  regra de três simples (200px 30caracteres, 15 por 15) String*/
+  regra de três simples (200px 30caracteres, 15 por 15) String
+  charat */
 
 }
