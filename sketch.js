@@ -40,8 +40,8 @@ function updateCard(raio, r, d, t) {
 
   for (let c = 0; c < cols; c++) {
     for (let r = 0; r < rows; r++) {
-      //stroke(255, 0, 0);
-      noStroke();
+      stroke(255, 0, 0);
+      /*noStroke();*/
       rect(grid_cols[c], grid_rows[r], width / cols, height / rows);
     }
   }
@@ -51,8 +51,11 @@ function updateCard(raio, r, d, t) {
 
   push();
   textSize(140);
-  text(t, grid_cols[0], grid_rows[6]);
+  text(t, grid_cols[0], grid_rows[10]);
   pop();
 
-  ellipse(100, 100, raio * 2, raio * 2);
+
+  fill(200,0,200);
+  ellipse(random(raio,width-raio), random(raio,height-raio), raio * 2, raio * 2);
+
 }
