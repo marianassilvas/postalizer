@@ -5,6 +5,7 @@
 	<title></title>
 
 	<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+	<script src="https://unpkg.com/rita"></script>
 	<link rel="stylesheet" href="homepage.css">
 
 	<style type="text/css">
@@ -19,7 +20,7 @@
 
 <body>
 	<label for="raio">raio</label>
-	<input type="text" id="msg" name="msg"><br><br>
+	<input type="text" id="radius" name="radius"><br><br>
 
 	<label for="raio">remetente</label>
 	<input type="text" id="rem" name="remetente"><br><br>
@@ -39,36 +40,39 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="sketch.js"></script>
 <script type="text/javascript">
-	var msg = "";
+	var radius = "";
 	var rem = "";
 	var dest = "";
 	var texto = "";
 
-	function processRita() {
-
+	function processRita(t) {
+		var divide = RiTa.pos(t);
+		console.log(divide);
 	}
 
-	function processMsg(m, r, d, t) {
+	function processMsg(ra, r, d, t) {
 		//call rita
+		processRita(t);
 		//call grama
 		// ....
 		//m = processRita(m)
-		updateCard(m, r, d, t);
+		updateCard(ra, r, d, t);
 		/*$('#canvas-container').css("display","block");*/
 		$('#canvas-container').css("opacity", 1);
 	}
 
+
 	$("#btn").click(function() {
 
-		msg = $("#msg").val();
+		radius = $("#radius").val();
 		rem = $("#rem").val();
 		dest = $("#dest").val();
 		texto = $("#texto").val();
 
-		console.log(msg, rem, dest, texto);
-		processMsg(msg, 'from ' + rem, 'dear ' + dest, texto);
-
+		console.log(radius, rem, dest, texto);
+		processMsg(radius, 'from ' + rem, 'dear ' + dest, texto);
 	});
+	
 </script>
 
 </html>
