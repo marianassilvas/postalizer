@@ -33,6 +33,8 @@
 
 	<button type="button" id="btn">draw</button><br><br>
 
+	<a href="lemmatizer_qunit">teste: lema mas não está a dar sei lá porquê</a>
+
 	<div id="canvas-container">
 		<div>
 </body>
@@ -46,6 +48,7 @@
 	var texto = "";
 
 	function processRita(t) {
+		//divide é um array? como diz no inspect?
 		var divide = RiTa.pos(t);
 		console.log(divide);
 	}
@@ -53,13 +56,12 @@
 	function processMsg(ra, r, d, t) {
 		//call rita
 		processRita(t);
-		//call grama
-		// ....
-		//m = processRita(m)
+		//processLemma();
 		updateCard(ra, r, d, t);
 		/*$('#canvas-container').css("display","block");*/
 		$('#canvas-container').css("opacity", 1);
 	}
+
 
 
 	$("#btn").click(function() {
@@ -72,7 +74,7 @@
 		console.log(radius, rem, dest, texto);
 		processMsg(radius, 'from ' + rem, 'dear ' + dest, texto);
 	});
-	
+
 </script>
 
 </html>
