@@ -57,10 +57,33 @@ function updateCard(raio, r, d, t) {
   tamanho_texto = textWidth(t);
   console.log(tamanho_texto);
 
+  //tentar resolver por largura do texto
+  //mas não consigo associar ponto de largura a posição
+  //na string
   if(tamanho_texto>=width){
     console.log('texto grande');
+
+    //resolver à conta dos espaços + nº carateres
+    //ou seja, descobrir exatamente qual o espaço
+    //antes da posição 3
+    let arraystrings = split(t,' ');
+    console.log(arraystrings);
+
     
+
   }
+
+  //resolver com nº máximo de carateres max/linha=13
+  var ncarateres = t.length;
+  console.log(ncarateres);
+
+  /*if (ncarateres>=13){
+
+    var ultimo=charAt(13);
+    var arraystrings[]=splitTokens(t,ultimo);
+    console.log(arraystrings[]);
+
+  }*/
 
   pop();
 
