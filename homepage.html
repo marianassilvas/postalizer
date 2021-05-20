@@ -4,8 +4,6 @@
 <head>
 	<title></title>
 
-	<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
-	<script src="https://unpkg.com/rita"></script>
 	<link rel="stylesheet" href="homepage.css">
 
 	<style type="text/css">
@@ -33,14 +31,19 @@
 
 	<button type="button" id="btn">draw</button><br><br>
 
-	<a href="lemmatizer_qunit">teste: lema mas não está a dar sei lá porquê</a>
 
 	<div id="canvas-container">
 		<div>
 </body>
 
+<script src="javascript-lemmatizer/bower_components/underscore/underscore.js"></script>
+<script src="javascript-lemmatizer/js/lemmatizer.js"></script>
+<script src="javascript-lemmatizer/bower_components/jquery/dist/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
+<script src="https://unpkg.com/rita"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="sketch.js"></script>
+
 <script type="text/javascript">
 	var radius = "";
 	var rem = "";
@@ -50,18 +53,27 @@
 	function processRita(t) {
 		//divide é um array? como diz no inspect?
 		var divide = RiTa.pos(t);
+
 		console.log(divide);
 	}
+
+	/*function processLemma(l){
+
+		var lemmatizer = new Lemmatizer();
+		lemmatizer.lemmas(l);
+		console.log(lemmatizer);
+	}*/
 
 	function processMsg(ra, r, d, t) {
 		//call rita
 		processRita(t);
 		//processLemma();
+		//processLemma(t);
 		updateCard(ra, r, d, t);
+
 		/*$('#canvas-container').css("display","block");*/
 		$('#canvas-container').css("opacity", 1);
 	}
-
 
 
 	$("#btn").click(function() {

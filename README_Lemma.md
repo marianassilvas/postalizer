@@ -1,7 +1,7 @@
 JavaScript Lemmatizer
 ====
 
-JavaScript Lemmatizer is a lemmatization library for JavaScript to retrieve a base form from an inflected form word in English. 
+JavaScript Lemmatizer is a lemmatization library for JavaScript to retrieve a base form from an inflected form word in English.
 
 Inspired by [Ruby Lemmatizer](https://github.com/yohasebe/lemmatizer) but the returned values and the algorithm are different from it.
 
