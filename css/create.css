@@ -20,13 +20,18 @@
   /*seta e titulo container*/
   width: 100%;
   height: 70px;
-  
+
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: stretch;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+#create1 svg{
+  /*seta e titulo container*/
+  /* width:auto; */
 }
 
 #titulocreate {

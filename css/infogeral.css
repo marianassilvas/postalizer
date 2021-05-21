@@ -12,8 +12,13 @@
 }
 
 /*-----------NAV---------*/
+html {
+  height: 100%;
+}
+
 body {
   background-color: blue;
+  height: 100%;
 }
 
 svg {
@@ -21,20 +26,11 @@ svg {
   margin-top: 5px;
   border-radius: 3px;
 
-
 }
-
-
 
 #lupa1:hover > path{
   stroke:white;
 }
-
-/* path:hover {
-  fill: white;
-  transition: fill 0.2s ease-out;
-
-} */
 
 .subtitulos {
   letter-spacing: 1px;
@@ -114,9 +110,9 @@ input[type=text]:hover {}
 
 #line1 {
   position: absolute;
-  width: 15.3%;
+  width: 17.3%;
   height: 0px;
-  right: 30px;
+  right: 20px;
   top: 45px;
   border: 1px solid #000000;
 }

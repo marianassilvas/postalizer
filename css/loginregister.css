@@ -4,6 +4,7 @@
   border-left: 1px solid #000000;
   padding: 20px 0px 10px 0px;
   text-align: right;
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -20,6 +21,7 @@
 #loginregister1 {
   width: 100%;
   height: 50px;
+
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -39,7 +41,6 @@
   width: 100%;
   color: black;
 
-  /*height: fit-content;*/
 }
 
 #logindiv {
@@ -50,6 +51,10 @@
 
   border-top: 1px solid #000000;
   padding: 20px 0px 20px 0px;
+}
+
+#logindiv > svg {
+  margin-right: 20px;
 }
 
 #registerdiv {
@@ -63,22 +68,33 @@
   padding: 20px 0px 20px 0px;
 
 }
-#loginregister1 svg{
+#registerdiv > svg {
+  margin-right: 20px;
+}
+#registerdiv > p {
   margin-left: 20px;
 }
 
-#loginregister svg>path {
+
+#loginregister1 svg{
+  margin-left: 20px;
+}
+#logindiv > p {
+  margin-left: 20px;
+}
+
+#loginregister svg > path {
   fill: black;
 }
 
-#loginregister:hover svg>path {
+#loginregister:hover svg > path {
   fill: white;
 }
 
-#loginregister svg:hover>path {
+#loginregister svg:hover > path {
   fill: red;
 }
 
-#loginregister:hover>path {
+#loginregister:hover > path {
   fill: black;
 }
