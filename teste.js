@@ -1,6 +1,8 @@
 function setup(){
-createCanvas(1300,600);
+let can= createCanvas(685,454);
+can.parent('canvas-container');
 }
+
 function draw(){
   background(100, 149, 237);
   fill(255);
