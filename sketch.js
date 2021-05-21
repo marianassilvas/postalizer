@@ -69,8 +69,8 @@ function updateCard(raio, r, d, t) {
   }
 
   //resolver com nº máximo de carateres max/linha=13
-  var ncarateres = t.length;
-  console.log(ncarateres);
+  /*var ncarateres = t.length;
+  console.log(ncarateres);*/
 
   /*if (ncarateres>=13){
 

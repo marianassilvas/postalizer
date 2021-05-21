@@ -155,7 +155,7 @@ Lemmatizer.prototype = {
   load_wordnet_files: function(pos, list, exc) {
     var key_idx = pos + this.idx;
     this.open_file(key_idx, list);
-    var key_exc = pos + this.exc; 
+    var key_exc = pos + this.exc;
     this.open_file(key_exc, exc);
   },
 
@@ -165,7 +165,7 @@ Lemmatizer.prototype = {
     _.each( this.fetch_data(key_idx), function(w) {
       self.wordlists[pos][w] = w;
     });
-    var key_exc = pos + this.exc; 
+    var key_exc = pos + this.exc;
     _.each( this.fetch_data(key_exc), function(item) {
       var w = item[0];
       var s = item[1];
@@ -191,7 +191,7 @@ Lemmatizer.prototype = {
     var data = JSON.parse(localStorage.getItem(key));
     return data;
   },
-  // end of set up dictionary data
+
 
   base_forms: function(pos) {
     this.irregular_bases(pos);
