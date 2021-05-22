@@ -23,11 +23,11 @@ function setup() {
   textSize(35); //podemos adicionar uma variável que dinamiza o tamanho de letra
 
   for (let c = 0; c < cols; c++) {
-    grid_cols[c] = c * width / cols;
+    grid_cols[c] = c * width_canvas / cols;
   }
 
   for (let r = 0; r < rows; r++) {
-    grid_rows[r] = r * height / rows;
+    grid_rows[r] = r * height_canvas / rows;
   }
 
   noLoop();
@@ -54,8 +54,8 @@ function updateCard(raio, r, d, t, dt, epoca) {
     }
   }
 
-  text(r, grid_cols[3], grid_rows[15]);
-  text(d, grid_cols[0], grid_rows[2]);
+  text(r, grid_cols[3], grid_rows[15]); //remetente
+  text(d, grid_cols[0], grid_rows[2]); //destinatário
   text(dt, grid_cols[4], grid_rows[2]); //data
 
   push();
@@ -63,10 +63,11 @@ function updateCard(raio, r, d, t, dt, epoca) {
   processNRC();
 
   textSize(60);
-  text(t, grid_cols[1], grid_rows[7]);
+  //text(t, grid_cols[1], grid_rows[7]);
+  //let tamanho_texto;
+  //tamanho_texto = textWidth(t);
 
-  let tamanho_texto;
-  tamanho_texto = textWidth(t);
+  writeText(t);
 
   pop();
 
@@ -119,5 +120,115 @@ function processColor(c) { //cores consoante a estação do ano
   }
 
   return cor;
+
+}
+
+function writeText(tt){
+
+  let texto=tt;
+  let linha1=texto;
+  let linha2, linha3, linha4, linha5, linha6;
+  let tamanho, tamanho1, tamanho2, tamanho3, tamanho4, tamanho5, tamanho6;
+  let l3,l4,l5,l6;
+
+  tamanho=textWidth(texto);
+  tamanho1=textWidth(linha1);
+
+  if(tamanho>=width_canvas){
+    let g=0;
+    while((tamanho1>=width_canvas)&&(linha1.length()>0)){
+      linha1=texto.substring(0,(texto.length()-g));
+      tamanho1=textWidth(linha1);
+      g++;
+    }
+
+    linha2=texto.substring((texto.length()-(g-1)),texto.length()); //def. linha2
+    tamanho2=textWidth(linha2);
+
+    let h=0;
+    while((tamanho2>=width_canvas)&&(linha2.length()>0)){
+      linha2=texto.substring((texto.length()-(g-1)),texto.length()-h); //NOVA LINHA2
+      tamanho2=textWidth(linha2);
+      h++;
+    }
+
+    if((linha2.charAt(linha2.length()-1))!=(texto.charAt(texto.length()-1))){
+      linha3=texto.substring((texto.length()-(h-1)), texto-length); //def. linha3
+      tamanho3=textWidth(linha3);
+      l3=1;
+
+      int j=0;
+      while((tamanho3>=width_canvas)&&(linha3.length()>0)){
+        linha3=texto.substring((texto.length()-(h-1)), texto.length()-j); //NOVA LINHA3
+        tamanho3=textWidth(linha3);
+        j++;
+      }
+
+      if(linha3.charAt(linha3.length()-1)!=texto.charAt(texto.length()-1)){
+        linha4=texto.substring(texto.length()-(j-1),texto.length()); //def.linha4
+        tamanho4=textWidth(linha4);
+        l4=1;
+
+        let k=0;
+        while((tamanho4>=width_canvas)&&(linha4.length()>0)){
+          linha4=texto.substring((texto.length()-(j-1)),texto.length()-k); //NOVA LINHA4
+          tamanho4=textWidth(linha4);
+          k++;
+        }
+
+        if((linha4.charAt(linha4.length()-1))!=(texto.charAt(texto.length()-1))){
+          linha5=texto.substring((texto.length()-(k-1)),texto.length());
+          tamanho5=textWidth(linha5);
+          l5=1;
+
+          int l=0;
+          while((tamanho5>=width_canvas)&&(linha5.length()>0)){
+            linha5=texto.substring(texto.length()-(k-1),texto.length()-l); //NOVA LINHA5
+            tamanho5=textWidth(linha5);
+            l++;
+          }
+
+          if((linha5.charAt(linha5.length()-1))!=(texto.charAt(texto.length()-1))){
+            linha6=texto.substring((texto.length()-(l-1)), texto-length()); //def.linha6
+            tamanho6=textWidth(linha6);
+            l6=1;
+          }
+        }
+      }
+    }
+
+    //desenhar texto + trim
+    linha1=trim(linha1);
+    text(linha1, grid_cols[0], grid_rows[4]);
+
+    if(linha2.length()>0){
+      linha2=trim(linha2);
+      text(linha2, grid_cols[0], grid_rows[6]);
+    }
+
+    if(l3==1){
+      linha3=trim(linha3);
+      text(linha3, grid_cols[0], grid_rows[8]);
+    }
+
+    if(l4==1){
+      linha4=trim(linha4);
+      text(linha4, grid_cols[0], grid_rows[10]);
+    }
+
+    if(l5==1){
+      linha5=trim(linha5);
+      text(linha5, grid_cols[0], grid_rows[12]);
+    }
+
+    if(l6==1){
+      linha6=trim(linha6);
+      text(linha6, grid_cols[0], grid_rows[14]);
+    }
+
+
+  }else{
+    text(texto, grid_cols[0], grid_rows[6]);
+  }
 
 }
