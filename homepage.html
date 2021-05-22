@@ -47,21 +47,22 @@
 <script src="seasons.js"></script>
 
 <script type="text/javascript">
-	var radius = "";
-	var rem = "";
-	var dest = "";
-	var texto = "";
+
+	let radius = "";
+	let rem = "";
+	let dest = "";
+	let texto = "";
 	const epoca = season(new Date(), seasons);
 
-	var dt = new Date();
-	var time = dt.getDate() + " / " +
+	let dt = new Date();
+	let time = dt.getDate() + " / " +
 		(dt.getMonth() + 1) + " / " +
 		dt.getFullYear();
 
 	function processRita(t) {
 		//divide é um array? como diz no inspect?
-		var divide = RiTa.pos(t);
-		console.log(divide);
+		let rt = RiTa.tokenize(t);
+		return rt;
 	}
 
 	/*function processLemma(l) {
@@ -76,7 +77,10 @@
 		//call rita
 		processRita(t);
 		//processLemma();
-		processColor(epoca,r,g,b);
+		let splitText = splitTokens(t,[' ', ',']);
+		processNRC(splitText);
+
+		processColor(epoca, r, g, b);
 		updateCard(ra, r, d, t, time, epoca);
 
 		/*$('#canvas-container').css("display","block");*/
@@ -92,9 +96,9 @@
 		dest = $("#dest").val();
 		texto = $("#texto").val();
 
-		console.log(radius, rem, dest, texto);
 		processMsg(radius, 'from ' + rem, 'dear ' + dest, texto);
 	});
+	
 </script>
 
 </html>

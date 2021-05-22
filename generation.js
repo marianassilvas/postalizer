@@ -5,8 +5,8 @@ let cols = 6,
 let width = 685;
 let height = 454;
 
-var grid_rows = [];
-var grid_cols = [];
+let grid_rows = [];
+let grid_cols = [];
 
 let r, g, b;
 
@@ -22,11 +22,11 @@ function setup() {
   textFont('blackout');
   textSize(35); //podemos adicionar uma variável que dinamiza o tamanho de letra
 
-  for (var c = 0; c < cols; c++) {
+  for (let c = 0; c < cols; c++) {
     grid_cols[c] = c * width / cols;
   }
 
-  for (var r = 0; r < rows; r++) {
+  for (let r = 0; r < rows; r++) {
     grid_rows[r] = r * height / rows;
   }
 
@@ -34,8 +34,7 @@ function setup() {
   noLoop();
 }
 
-function draw() {
-}
+function draw() {}
 
 function preload() {
   table = loadTable('assets/NRC-Word-Emotion.csv', 'csv', 'header');
@@ -62,47 +61,40 @@ function updateCard(raio, r, d, t, dt, epoca) {
 
   push();
 
+  processNRC();
+
   textSize(60);
   text(t, grid_cols[1], grid_rows[7]);
 
-  var tamanho_texto;
+  let tamanho_texto;
   tamanho_texto = textWidth(t);
-  console.log(tamanho_texto);
 
-  //tentar resolver por largura do texto
-  //mas não consigo associar ponto de largura a posição
-  //na string
-  if (tamanho_texto >= width) {
-    console.log('texto grande');
-    //resolver à conta dos espaços + nº carateres
-    //ou seja, descobrir exatamente qual o espaço
-    //antes da posição 3
-    let arraystrings = split(t, ' ');
-    console.log(arraystrings);
-  }
-
-  //resolver com nº máximo de carateres max/linha=13
-  /*var ncarateres = t.length;
-  console.log(ncarateres);*/
-
-  /*if (ncarateres>=13){
-
-    var ultimo=charAt(13);
-    var arraystrings[]=splitTokens(t,ultimo);
-    console.log(arraystrings[]);
-
-  }*/
   pop();
 
   let cor = processColor(epoca);
 
-  console.log(processColor(epoca));
-
   for (let a = 0; a < 4; a++) {
     push();
     fill(cor[0], cor[1], cor[2]);
-    ellipse(random(raio, width - raio * 2), random(raio, height - raio * 2), raio * 2, raio* 2);
+    ellipse(random(raio, width - raio * 2), random(raio, height - raio * 2), raio * 2, raio * 2);
     pop();
+  }
+}
+
+function processNRC(g) {
+  //print(t);
+  let column = table.getColumn('English (en)');
+  //print(column);
+  let textoNRC = g;
+
+  if (typeof(textoNRC) != 'undefined') {
+
+    for (var i = 0; i < column.length; i++) {
+      for (var h = 0; h < textoNRC.length; h++) {
+        if (textoNRC[h] === column[i]) console.log(textoNRC[h]);
+      }
+    }
+
   }
 }
 
