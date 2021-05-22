@@ -2,8 +2,8 @@
 let cols = 6,
   rows = 16;
 
-let width = 685;
-let height = 454;
+let width_canvas = 685;
+let height_canvas = 454;
 
 let grid_rows = [];
 let grid_cols = [];
@@ -15,7 +15,7 @@ let table;
 
 function setup() {
 
-  let cnv = createCanvas(width, height);
+  let cnv = createCanvas(width_canvas, height_canvas);
   cnv.parent('canvas-container');
 
   loadFont('assets/blackout_midnight-webfont.ttf', updateCard);
@@ -76,7 +76,7 @@ function updateCard(raio, r, d, t, dt, epoca) {
   for (let a = 0; a < 4; a++) {
     push();
     fill(cor[0], cor[1], cor[2]);
-    ellipse(random(raio, width - raio * 2), random(raio, height - raio * 2), raio * 2, raio * 2);
+    ellipse(random(raio, width_canvas - raio * 2), random(raio, height_canvas - raio * 2), raio * 2, raio * 2);
     pop();
   }
 }
