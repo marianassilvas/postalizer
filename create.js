@@ -19,6 +19,9 @@ $(document).ready(function() {
       $(".animgaveta1 .block").css("overflow", "visible");
       $("#create").addClass("abertostyle");
       $(".createcontainer").css("display", "flex");
+      $("#create").css("cursor", "default");
+      $("#create1").css("cursor", "pointer");
+
 
       $(".abertostyle").css("background-color", "white");
       $("#titulocreate").css("color", "black");
@@ -61,6 +64,8 @@ $(document).ready(function() {
       $("#create").removeClass("abertostyle");
       $(".createcontainer").css("display", "none");
       $("#create svg").css("transform", "rotate(0deg)");
+      $("#create").css("cursor", "pointer");
+      $("#create1").css("cursor", "pointer");
 
       //e enquanto está fechado, quando se passa o rato NA DIV..:
       $("#create").hover(function() {
@@ -91,6 +96,28 @@ $(document).ready(function() {
   $("#create svg").on("click", function() {
 
   });
+
+
+
+
+
+  $("#newpostal").on("click", function() {
+      $("#postalsetup").css("display", "none");
+      $("#formcreatenew").css("display", "flex");
+
+    printF();
+  });
+
+
+  $("#oldpostal").on("click", function() {
+      $("#postalsetup").css("display", "none");
+      $("#formcreatefrom").css("display", "flex");
+
+    printF();
+  });
+
+
+
 
 
 

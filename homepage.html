@@ -20,9 +20,9 @@
 
     <!---nav de cima -------------------->
     <nav class="topnavbar">
-<!-- <a href="homepage.html" title="2019" target="_self"> -->
+      <!-- <a href="homepage.html" title="2019" target="_self"> -->
       <h1 id="titulo"> POSTALIZER </h1>
-<!-- </a> -->
+      <!-- </a> -->
       <div class="subtitulos" id="search">
         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="">
           <path id="lupa" d="M10.8333 18.4167C15.0215 18.4167 18.4167 15.0215 18.4167 10.8333C18.4167 6.64517 15.0215 3.25 10.8333 3.25C6.64517 3.25 3.25 6.64517 3.25 10.8333C3.25 15.0215 6.64517 18.4167 10.8333 18.4167Z" stroke="black"
@@ -62,9 +62,59 @@
         <div class="createcontainer">
           <div id="textocreate">
             <p> Create your postal and send it to a friend! </p><br>
-
-            <div id="canvas-container"></div>
           </div>
+
+          <div id="postalsetup">
+            <button type="button" id="newpostal"> Create New</button>
+            <button type="button" id="oldpostal"> Create From Another</button>
+          </div>
+
+
+<!--ººººººººººººººººCARREGAR NO BOTÃO CRIAR POSTAL NOVO+ººººººº -->
+          <div id="formcreatenew">
+            <div>
+              <label for="from">From:</label>
+              <input type="text" id="from" name="From"><br>
+            </div>
+
+            <div>
+              <label for="to">To:</label>
+              <input type="text" id="to" name="To"><br>
+            </div>
+
+            <div id="caixatexto">
+              <label for="raio">Raio:</label>
+              <input type="text" id="raio" name="Raio"><br>
+            </div>
+
+            <div>
+              <button type="button" id="btncreate">Create!</button><br>
+            </div>
+
+           <div id="canvas-container"></div>
+          </div>
+<!--ººººººººººººººººCARREGAR NO BOTÃO CRIAR DE OUTRO POSTAL+ººººººº -->
+<div id="formcreatefrom">
+  <div>
+    <label for="raio">Upload your postal here:</label>
+    <input type="image" id="ImageUpload" name="ImageUpload"><br>
+  </div>
+
+  <div>
+    <label for="raio">From:</label>
+    <input type="text" id="from2" name="From"><br>
+  </div>
+
+  <div>
+    <label for="raio">To:</label>
+    <input type="text" id="to2" name="To"><br>
+  </div>
+
+</div>
+
+
+
+
         </div>
       </div>
 

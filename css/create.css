@@ -1,8 +1,8 @@
+/* --------Gaveta Create ----------*/
 #create {
   width: 60%;
   height: 100%;
   padding: 20px;
-
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -14,24 +14,19 @@
 #create:hover {
   background-color: black;
   color: white;
+  cursor: pointer;
 }
 
 #create1 {
   /*seta e titulo container*/
   width: 100%;
-  height: 70px;
-
+  height: 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-content: stretch;
   justify-content: space-between;
   align-items: flex-start;
-}
-
-#create1 svg{
-  /*seta e titulo container*/
-  /* width:auto; */
 }
 
 #titulocreate {
@@ -43,21 +38,129 @@
   width: 100%;
   color: black;
   height: fit-content;
+  flex-direction: column;
 }
 
-#create svg > path{
-  fill:black;
-}
-
-#create:hover svg > path{
-  fill:white;
-}
-
-#create svg:hover > path{
-  fill: red;
-
-}
-#create:hover > path{
+#create svg>path {
   fill: black;
+}
 
+#create:hover svg>path {
+  fill: white;
+}
+
+#create svg:hover>path {
+  fill: red;
+}
+
+#create:hover>path {
+  fill: black;
+}
+
+/* --------Postal Setup ----------*/
+#postalsetup {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#postalsetup button {
+  background-color: white;
+  border: 1px solid #000000;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 10px 2px;
+  cursor: pointer;
+  width: 40%;
+  transition: 0.2s;
+}
+
+#postalsetup button:hover {
+  background-color: black;
+  color: white;
+}
+
+#canvas-container {
+  display: none;
+}
+
+/* ------------FORM CRIAR NOVO---------- */
+#formcreatenew {
+  display: none;
+  font-size: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+
+
+}
+#formcreatenew input[type=text]{
+  font-size: 16px;
+  /* font-weight: 100; */
+  letter-spacing: 1px;
+  border: none;
+  /*border-radius: 5px;*/
+  /* background: linear-gradient(to right, #FFFFFF 0%,#464747 #F9F9F9 100%); */
+  transition: width 0.4s ease;
+  outline: none;
+
+}
+
+#caixatexto{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#caixatexto input[type=text]{
+  font-size: 16px;
+  outline: 1px solid;
+  height: 100px;
+}
+
+
+#formcreatenew button {
+  background-color: white;
+  border: 1px solid #000000;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.2s;
+}
+
+#formcreatenew button:hover {
+  background-color: black;
+  color: white;
+}
+
+/* ------------FORM CRIAR A PARTIR DE UM NOVO POSTAL---------- */
+
+#formcreatefrom{
+  display: none;
+
+  font-size: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+#formcreatefrom input[type=text]{
+  font-size: 16px;
+  /* font-weight: 100; */
+  letter-spacing: 1px;
+  border: none;
+  /*border-radius: 5px;*/
+  /* background: linear-gradient(to right, #FFFFFF 0%,#464747 #F9F9F9 100%); */
+  transition: width 0.4s ease;
+  outline: none;
+  text-align: start;
 }

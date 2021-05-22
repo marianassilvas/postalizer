@@ -16,6 +16,7 @@
 #loginregister:hover {
   background-color: black;
   color: white;
+  cursor: pointer;
 }
 
 #loginregister1 {

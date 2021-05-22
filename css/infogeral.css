@@ -19,6 +19,7 @@ html {
 body {
   background-color: blue;
   height: 100%;
+  transition: 0.2s;
 }
 
 svg {
@@ -28,9 +29,6 @@ svg {
 
 }
 
-#lupa1:hover > path{
-  stroke:white;
-}
 
 .subtitulos {
   letter-spacing: 1px;
@@ -91,7 +89,7 @@ svg {
   justify-content: space-around;
 }
 
-input[type=text] {
+.topnavbar input[type=text] {
   position: relative;
   padding: 10px 30px 10px 20px;
   color: black;
@@ -106,7 +104,9 @@ input[type=text] {
   outline: none;
 }
 
-input[type=text]:hover {}
+.topnavbar input[type=text]:hover {
+
+}
 
 #line1 {
   position: absolute;
