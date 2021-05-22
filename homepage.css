@@ -5,17 +5,17 @@
 }
 
 @font-face {
-  font-family: 'HelveticaNeue';
   font-weight: bold;
-  src: url('webfonts/HelveticaNeue-Bold-02.ttf') format('truetype');
+  font-family: 'HelveticaNeue';
+  src: url('assets/HelveticaNeue-01.ttf') format('truetype');
 }
 
 * {
   padding: 0;
   margin: 0;
+  font-family: 'HelveticaNeue';
 }
 
 h1 {
   font-family: 'HelveticaNeue';
-  font-weight: bold;
 }

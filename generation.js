@@ -30,7 +30,6 @@ function setup() {
     grid_rows[r] = r * height / rows;
   }
 
-
   noLoop();
 }
 
@@ -98,7 +97,7 @@ function processNRC(g) {
   }
 }
 
-function processColor(c) {
+function processColor(c) { //cores consoante a estação do ano
 
   let cor = [];
 
