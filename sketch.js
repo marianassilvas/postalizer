@@ -8,11 +8,6 @@ let height = 454;
 var grid_rows = [];
 var grid_cols = [];
 
-let r, g, b;
-
-let table;
-
-
 function setup() {
 
   let cnv = createCanvas(width, height);
@@ -30,40 +25,33 @@ function setup() {
     grid_rows[r] = r * height / rows;
   }
 
-
   noLoop();
 }
 
 function draw() {
+  background(220);
+  ellipse(50, 50, 80, 80);
 }
 
-function preload() {
-  table = loadTable('assets/NRC-Word-Emotion.csv', 'csv', 'header');
-}
 
-
-function updateCard(raio, r, d, t, dt, epoca) {
+function updateCard(raio, r, d, t) {
 
   background(220);
-  noStroke();
 
   for (let c = 0; c < cols; c++) {
     for (let r = 0; r < rows; r++) {
-      push();
       stroke(255, 0, 0);
       rect(grid_cols[c], grid_rows[r], width / cols, height / rows);
-      pop();
     }
   }
 
   text(r, grid_cols[3], grid_rows[15]);
   text(d, grid_cols[0], grid_rows[2]);
-  text(dt, grid_cols[4], grid_rows[2]); //data
 
   push();
 
-  textSize(60);
-  text(t, grid_cols[1], grid_rows[7]);
+  textSize(70);
+  text(t, grid_cols[0], grid_rows[4]);
 
   var tamanho_texto;
   tamanho_texto = textWidth(t);
@@ -72,18 +60,18 @@ function updateCard(raio, r, d, t, dt, epoca) {
   //tentar resolver por largura do texto
   //mas não consigo associar ponto de largura a posição
   //na string
-  if (tamanho_texto >= width) {
+  if(tamanho_texto >= width){
     console.log('texto grande');
     //resolver à conta dos espaços + nº carateres
     //ou seja, descobrir exatamente qual o espaço
     //antes da posição 3
-    let arraystrings = split(t, ' ');
+    let arraystrings = split(t,' ');
     console.log(arraystrings);
   }
 
   //resolver com nº máximo de carateres max/linha=13
-  /*var ncarateres = t.length;
-  console.log(ncarateres);*/
+  var ncarateres = t.length;
+  console.log(ncarateres);
 
   /*if (ncarateres>=13){
 
@@ -94,40 +82,13 @@ function updateCard(raio, r, d, t, dt, epoca) {
   }*/
   pop();
 
-  let cor = processColor(epoca);
+  push();
+  fill(200,0,200);
+  ellipse(100, 100, raio * 2, raio * 2);
+  pop();
 
-  console.log(processColor(epoca));
-
-  for (let a = 0; a < 4; a++) {
-    push();
-    fill(cor[0], cor[1], cor[2]);
-    ellipse(random(raio, width - raio * 2), random(raio, height - raio * 2), raio * 2, raio* 2);
-    pop();
-  }
-}
-
-function processColor(c) {
-
-  let cor = [];
-
-  if (c == 'spring') {
-    cor[0] = random(0, 200);
-    cor[1] = random(150, 255);
-    cor[2] = random(0, 60);
-  } else if (c == 'summer') {
-    cor[1] = 242;
-    cor[2] = 203;
-    cor[3] = 5;
-  } else if (c == 'winter') {
-    cor[1] = 3;
-    cor[2] = 45;
-    cor[3] = 168;
-  } else {
-    cor[1] = 176;
-    cor[2] = 94;
-    cor[3] = 34;
-  }
-
-  return cor;
+  /* Monoespacejada algoritmo que vai ter uma aproximação da distância de uma porção de textFont
+  regra de três simples (200px 30caracteres, 15 por 15) String
+  charat */
 
 }
