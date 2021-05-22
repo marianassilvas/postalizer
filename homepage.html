@@ -17,6 +17,7 @@
 </head>
 
 <body>
+
 	<label for="raio">raio</label>
 	<input type="text" id="radius" name="radius"><br><br>
 
@@ -42,18 +43,24 @@
 <script src="https://cdn.jsdelivr.net/npm/p5@1.3.1/lib/p5.js"></script>
 <script src="https://unpkg.com/rita"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="sketch.js"></script>
+<script src="generation.js"></script>
+<script src="seasons.js"></script>
 
 <script type="text/javascript">
 	var radius = "";
 	var rem = "";
 	var dest = "";
 	var texto = "";
+	const epoca = season(new Date(), seasons);
+
+	var dt = new Date();
+	var time = dt.getDate() + " / " +
+		(dt.getMonth() + 1) + " / " +
+		dt.getFullYear();
 
 	function processRita(t) {
 		//divide é um array? como diz no inspect?
 		var divide = RiTa.pos(t);
-
 		console.log(divide);
 	}
 
@@ -64,14 +71,17 @@
 		console.log(lemmatizer);
 	}*/
 
+
 	function processMsg(ra, r, d, t) {
 		//call rita
 		processRita(t);
 		//processLemma();
-		updateCard(ra, r, d, t);
+		processColor(epoca,r,g,b);
+		updateCard(ra, r, d, t, time, epoca);
 
 		/*$('#canvas-container').css("display","block");*/
 		$('#canvas-container').css("opacity", 1);
+
 	}
 
 
