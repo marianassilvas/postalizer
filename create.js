@@ -30,9 +30,9 @@ $(document).ready(function() {
 
       //e enquanto está aberto, quando se passa o rato na DIV..:
       $("#create").hover(function() {
-       $("#titulocreate").css("color", "black");
-       $("#create svg > path").css("fill", "black");
-       $(".abertostyle").css("background-color", "white");
+        $("#titulocreate").css("color", "black");
+        $("#create svg > path").css("fill", "black");
+        $(".abertostyle").css("background-color", "white");
 
         //sem o hover, volta ao normal...
       }, function() {
@@ -45,10 +45,10 @@ $(document).ready(function() {
 
       //e enquanto está aberto, quando se passa o rato na SETA..:
       $("#create1 > svg").hover(function() {
-      $("#create svg > path").css("fill", "red");
+        $("#create svg > path").css("fill", "red");
         //sem o hover, volta ao normal...
       }, function() {
-      $("#create svg > path").css("fill", "black");
+        $("#create svg > path").css("fill", "black");
       });
 
 
@@ -82,14 +82,14 @@ $(document).ready(function() {
 
       //e enquanto está fechado, quando se passa o rato na SETA..:
       $("#create1 > svg").hover(function() {
-      $("#create svg > path").css("fill", "red");
+        $("#create svg > path").css("fill", "red");
         //sem o hover, volta ao normal...
       }, function() {
-      $("#create svg > path").css("fill", "white");
+        $("#create svg > path").css("fill", "white");
       });
 
     }
-    printF();
+
   });
 
   //---só quando clicka na seta
@@ -100,25 +100,118 @@ $(document).ready(function() {
 
 
 
-
+  //----------------------quando se carrega no botão criar um postal novo
   $("#newpostal").on("click", function() {
-      $("#postalsetup").css("display", "none");
-      $("#formcreatenew").css("display", "flex");
+    $("#postalsetup").css("display", "flex");
+    $("#formcreatenew").css("display", "flex");
+    $("#formcreatefrom").css("display", "none");
+    $(".abertostyle").css("overflow", "scroll")
+    $("#newpostal").css("background-color", "black")
+    $("#newpostal").css("color", "white")
+    $("#oldpostal").css("background-color", "white")
+    $("#oldpostal").css("color", "black")
+    $("#savepostal").css("display", "none");
+    $("#canvas-container").css("display", "none");
+    $("#canvas_container2").css("display", "none");
+    $("#savepostal2").css("display", "none");
 
-    printF();
+    //quando se passa o rato no criar from another
+    $("#oldpostal").hover(function() {
+      $("#oldpostal").css("background-color", "black")
+      $("#oldpostal").css("color", "white")
+
+
+      //sem o hover, volta ao normal...
+    }, function() {
+      $("#oldpostal").css("background-color", "white")
+      $("#oldpostal").css("color", "black")
+    });
+
+
+
   });
 
 
+  //quando se carrega no botão CREATE dentro do criar um postal novo (depois do form)
+  $("#btncreate").on("click", function() {
+    $("#postalsetup").css("display", "flex");
+    $("#formcreatenew").css("display", "none");
+    $("#formcreatefrom").css("display", "none");
+    $(".abertostyle").css("overflow", "scroll")
+    //$("#btncreate").css("display", "flex");
+
+    $("#newpostal").css("background-color", "white")
+    $("#newpostal").css("color", "black")
+    $("#oldpostal").css("background-color", "white")
+    $("#oldpostal").css("color", "black")
+    $("#savepostal").css("display", "flex");
+    $("#canvas_container2").css("display", "none");
+
+
+  });
+  //quando se carrega no botão Download
+  $("#downloadpostal").on("click", function() {
+    saveMyCanvas(["Postal"], ["1"]);
+
+  });
+  //quando se carrega no botão RUN AGAIN --> no teste.js
+  $("#runagainpostal").on("click", function() {
+
+
+  });
+
+  //-----------------------quando se carrega no botão criar um postal a partir de outro
   $("#oldpostal").on("click", function() {
-      $("#postalsetup").css("display", "none");
-      $("#formcreatefrom").css("display", "flex");
+    $("#postalsetup").css("display", "flex");
+    $("#formcreatefrom").css("display", "flex");
+    $("#formcreatenew").css("display", "none");
+    $(".abertostyle").css("overflow", "scroll")
+    $("#newpostal").css("background-color", "white")
+    $("#newpostal").css("color", "black")
+    $("#oldpostal").css("background-color", "black")
+    $("#oldpostal").css("color", "white")
 
-    printF();
+    $("#canvas-container").css("display", "none");
+    $("#savepostal").css("display", "none");
+    $("#savepostal2").css("display", "none");
+    $("#canvas_container2").css("display", "none");
+
+    //quando se passa o rato no botão create new postal
+    $("#newpostal").hover(function() {
+      $("#newpostal").css("background-color", "black")
+      $("#newpostal").css("color", "white")
+
+      //sem o hover, volta ao normal...
+    }, function() {
+      $("#newpostal").css("background-color", "white")
+      $("#newpostal").css("color", "black")
+    });
+
+  });
+
+  //quando se carrega no botão CREATE dentro do criar um postal A PARTIR DE OUTRO (depois do form)
+  $("#btncreate2").on("click", function() {
+    $("#postalsetup2").css("display", "flex");
+    $("#formcreatenew").css("display", "none");
+    $("#formcreatefrom").css("display", "none");
+    $(".abertostyle").css("overflow", "scroll")
+    //$("#btncreate").css("display", "flex");
+
+    $("#newpostal").css("background-color", "white")
+    $("#newpostal").css("color", "black")
+    $("#oldpostal").css("background-color", "white")
+    $("#oldpostal").css("color", "black")
+    $("#savepostal2").css("display", "flex");
+   $("#canvas_container2").css("display", "flex");
+
+  });
+  //quando se carrega no botão Download
+  $("#downloadpostal2").on("click", function() {
+    saveMyCanvas(["Postal"], ["1"]);
+
   });
 
 
 
 
-
-
-});//doc  finish
+}); //doc  finish

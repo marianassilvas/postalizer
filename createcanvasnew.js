@@ -1,8 +1,9 @@
+
+
 function setup(){
 
 let width=685;
 let height=454;
-
 let can = createCanvas(width, height);
 can.parent('#canvas-container');
 }
@@ -28,9 +29,27 @@ function draw(){
    updateCard(ra, r, d);
 
  }
+ function saveMyCanvas(){
+   saveCanvas("#canvas-container",["jpg"], ["jpg"]);
+ }
+ function resetMyCanvas(){
+   //resetCanvas("#canvas-container");
+ }
 
-
+//quando se carrega no CREATE
  $("#btncreate").click(function() {
+ $('#canvas-container').css("display", "flex");
+   raio = $("#raio").val();
+   from = $("#from").val();
+   to = $("#to").val();
+
+   console.log(raio, from, to);
+   processMsg(raio, 'from ' + from, 'dear ' + to);
+   updateCard(raio, from, to);
+ });
+
+//quando se carrega no RUN AGAIN
+ $("#runagainpostal").click(function() {
  $('#canvas-container').css("display", "flex");
    raio = $("#raio").val();
    from = $("#from").val();
@@ -43,7 +62,7 @@ function draw(){
 
 
  function updateCard(raio, r, d) {
-
+   background(255);
    push();
    fill(200,0,200);
    ellipse(random(raio,width-raio), random(raio,height-raio), raio * 2, raio * 2);

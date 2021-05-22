@@ -33,7 +33,6 @@
 
         <p>Search profiles</p>
         <input type="text" placeholder="">
-        <div id="line1"> </div>
         <div>
     </nav>
   </header>
@@ -70,7 +69,7 @@
           </div>
 
 
-<!--ººººººººººººººººCARREGAR NO BOTÃO CRIAR POSTAL NOVO+ººººººº -->
+          <!--ººººººººººººººººCARREGAR NO BOTÃO CRIAR POSTAL NOVO+ººººººº -->
           <div id="formcreatenew">
             <div>
               <label for="from">From:</label>
@@ -90,36 +89,55 @@
             <div>
               <button type="button" id="btncreate">Create!</button><br>
             </div>
-
-           <div id="canvas-container"></div>
           </div>
-<!--ººººººººººººººººCARREGAR NO BOTÃO CRIAR DE OUTRO POSTAL+ººººººº -->
-<div id="formcreatefrom">
-  <div>
-    <label for="raio">Upload your postal here:</label>
-    <input type="image" id="ImageUpload" name="ImageUpload"><br>
-  </div>
-
-  <div>
-    <label for="raio">From:</label>
-    <input type="text" id="from2" name="From"><br>
-  </div>
-
-  <div>
-    <label for="raio">To:</label>
-    <input type="text" id="to2" name="To"><br>
-  </div>
-
-</div>
 
 
+          <div id="canvas-container">
+          </div>
+
+          <div id="savepostal">
+            <button type="button" id="runagainpostal"> Run Again</button>
+            <button type="button" id="downloadpostal"> Download </button>
+          </div>
+
+
+          <!--ººººººººººººººººCARREGAR NO BOTÃO CRIAR DE OUTRO POSTAL+ººººººº -->
+          <div id="formcreatefrom">
+            <div>
+              <label for="raio">Upload your postal here:</label>
+              <input type="image" id="imageupload" name="ImageUpload"><br>
+            </div>
+
+            <div>
+              <label for="raio">From:</label>
+              <input type="text" id="from2" name="From"><br>
+            </div>
+
+            <div>
+              <label for="raio">To:</label>
+              <input type="text" id="to2" name="To"><br>
+            </div>
+
+            <div>
+              <button type="button" id="btncreate2">Create!</button><br>
+            </div>
+
+          </div>
+
+          <div id="canvas_container2">
+          </div>
+
+          <div id="savepostal2">
+            <button type="button" id="runagainpostal2"> Run Again</button>
+            <button type="button" id="downloadpostal2"> Download </button>
+          </div>
 
 
         </div>
       </div>
 
 
-      <!-- login register -->
+      <!-- ªªªªªªªªªLOGIN REGISTERªªªªªªªª-->
       <div class="subtitulos animgaveta2" id="loginregister">
 
         <div id="loginregister1">
@@ -159,8 +177,10 @@
   </footer>
 
 
-  <script src="teste.js"></script>
+
   <script src="create.js"></script>
   <script src="loginregister.js"></script>
+  <script src="createcanvasnew.js"></script>
+  <script src="createcanvasfrom.js"></script>
 
 </body>
