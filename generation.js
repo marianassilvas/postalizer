@@ -93,7 +93,6 @@ function processNRC(g) {
         if (textoNRC[h] === column[i]) console.log(textoNRC[h]);
       }
     }
-
   }
 }
 
