@@ -9,7 +9,7 @@ $("#loginregister1").on("click", function() {
   if ($(".animgaveta2").height() < 71) { //quando está fechado e há click
 
     $(".animgaveta2").finish().animate({ //abre....
-      height: windowHeight * 1.75,
+      height: windowHeight * 1.35,
 
     }, 500);
 

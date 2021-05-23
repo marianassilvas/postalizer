@@ -11,7 +11,7 @@ $(document).ready(function() {
     if ($(".animgaveta1").height() < 71) { //quando está fechado e há click
 
       $(".animgaveta1").finish().animate({ //abre....
-        height: windowHeight2 * 1.75,
+        height: windowHeight2 * 1.35,
 
       }, 500);
 
@@ -162,6 +162,7 @@ $(document).ready(function() {
 
   //-----------------------quando se carrega no botão criar um postal a partir de outro
   $("#oldpostal").on("click", function() {
+
     $("#postalsetup").css("display", "flex");
     $("#formcreatefrom").css("display", "flex");
     $("#formcreatenew").css("display", "none");
