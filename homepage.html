@@ -18,9 +18,6 @@
 
 <body>
 
-	<label for="raio">raio</label>
-	<input type="text" id="radius" name="radius"><br><br>
-
 	<label for="raio">remetente</label>
 	<input type="text" id="rem" name="remetente"><br><br>
 
@@ -48,7 +45,6 @@
 
 <script type="text/javascript">
 
-	let radius = "";
 	let rem = "";
 	let dest = "";
 	let texto = "";
@@ -73,7 +69,7 @@
 	}*/
 
 
-	function processMsg(ra, r, d, t) {
+	function processMsg(r, d, t) {
 		//call rita
 		processRita(t);
 		//processLemma();
@@ -82,7 +78,7 @@
 		processNRC(split_text);
 
 		processColor(epoca, r, g, b);
-		updateCard(ra, r, d, t, time, epoca);
+		updateCard(r, d, t, time, epoca);
 
 		/*$('#canvas-container').css("display","block");*/
 		$('#canvas-container').css("opacity", 1);
@@ -92,12 +88,12 @@
 
 	$("#btn").click(function() {
 
-		radius = $("#radius").val();
+
 		rem = $("#rem").val();
 		dest = $("#dest").val();
 		texto = $("#texto").val();
 
-		processMsg(radius, 'from ' + rem, 'dear ' + dest, texto);
+		processMsg('from ' + rem, 'dear ' + dest, texto);
 	});
 
 </script>
