@@ -1,6 +1,6 @@
 
-  //let cors = require("cors");
-  //app.use(cors());
+  // let cors = require("cors");
+  // app.use(cors());
   $("input#upload").on("click", function() {
        alert("botãofuncionou");  //apagar
 

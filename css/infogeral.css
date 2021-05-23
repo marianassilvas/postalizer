@@ -1,12 +1,15 @@
 @font-face {
   font-family: 'HelveticaNeue';
   src: url('/Users/marianasilva/postalizer/webfonts/HelveticaNeue-01.ttf') format('truetype');
+  src: url('/Users/marianasilva/postalizer/webfonts/HelveticaNeue-Bold-02.ttf') format('truetype');
+  src: url('/Users/marianasilva/postalizer/webfonts/HelveticaNeue-BoldItalic-04.ttf') format('truetype');
+  src: url('webfonts/HelveticaNeue-01.ttf') format('truetype');
 }
-
 
 
 *, *:after, *:before {
   font-family: 'HelveticaNeue';
+  font-weight: bold;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
