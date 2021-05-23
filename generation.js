@@ -99,16 +99,20 @@ function updateCard(r, d, t, dt, epoca) {
     }
   }
 
-  strokeWeight(2);
+  //strokeWeight(2);
   desenhaFormas(p1, p2, p3, p4, p5);
 
+  push();
+  noStroke();
   textSize(35);
   text(r, grid_cols[3], grid_rows[16]); //remetente
   text(d, grid_cols[0], grid_rows[1]); //destinatário
   text(dt, grid_cols[4], grid_rows[1]); //data
+  pop();
 
   push();
   textSize(55);
+  noStroke();
   writeText(t);
   pop();
 
@@ -130,9 +134,6 @@ function updateCard(r, d, t, dt, epoca) {
 
 }
 
-function limpa (){
-  if(limpeza)clear();
-}
 
 function processNRC(g) {
   //print(t);
@@ -435,11 +436,13 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
 
         for (var j = 0; j < numpontas; j++) {
 
+          push();
           px = x + raio * cos(j * (2 * PI / numpontas));
           py = y + raio * sin(j * (2 * PI / numpontas));
           stroke(0, random(100, 255), 0);
           strokeWeight(2);
           line(x, y, px, py);
+          pop();
         }
 
       }
@@ -448,6 +451,7 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
 
     if (p2__ == anger_soma && p2__ > 0) { //desenho anger
 
+      push();
       var numpontos = p2__ + 3;
       var x, y, px, py;
       var raio1 = 50;
@@ -468,6 +472,7 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
         vertex(px, py);
       }
       endShape(CLOSE);
+      pop();
 
     } else if (p2__ == fear_soma && p2__ > 0) { //desenho fear
 
