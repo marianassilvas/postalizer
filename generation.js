@@ -54,6 +54,8 @@ var trust = [];
 var trust_int = [];
 var trust_soma = [];
 
+let limpeza = false;
+
 
 function setup() {
 
@@ -121,6 +123,15 @@ function updateCard(r, d, t, dt, epoca) {
     pop();
   }
 
+  if (limpeza) limpeza=false;
+  else limpeza=true;
+
+  print(limpeza);
+
+}
+
+function limpa (){
+  if(limpeza)clear();
 }
 
 function processNRC(g) {
@@ -131,6 +142,7 @@ function processNRC(g) {
 
   let corresponde_palavras = []; //array que vai receber palavras da msg que existem na tabela
   let row_corresponde = []; //rows correspondentes a cada palavra que existe do NRC na msg
+
 
 
   if (typeof(textoNRC) != 'undefined') {
