@@ -1,7 +1,7 @@
 
 
 function setup(){
-
+  // noLoop();
 let width=685;
 let height=454;
 let can2 = createCanvas(width, height);
@@ -54,8 +54,14 @@ function draw(){
 
 
  function updateCard(raio2, r, d) {
-   
-   background(255);   //aqui tem que ir a imagem uploaded
+   background(255);
+   if(pathToNewImage != 0){
+     loadImage(pathToNewImage, img => {
+    image(img, 0, 0,685,454);
+  });
+  //aqui tem que ir a imagem uploaded
+   }
+
    push();
    fill(200,0,200);
    ellipse(random(raio2,width-raio2), random(raio2,height-raio2), raio2 * 2, raio2 * 2);

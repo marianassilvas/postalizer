@@ -18,8 +18,6 @@ function draw(){
   updateCard(ra, r, d);
 }
 
-
-
 //mensagem crate new processamento
  var raio = "";
  var from = "";

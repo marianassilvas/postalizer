@@ -1,6 +1,7 @@
 
   // let cors = require("cors");
   // app.use(cors());
+let pathToNewImage =0;
   $("input#upload").on("click", function() {
        alert("botãofuncionou");  //apagar
 
@@ -21,6 +22,7 @@
               processData: false,
               success: function(response){
                  if(response != 0){
+                   pathToNewImage =response;
                     $("#img").attr("src",response);
                     $(".preview img").show(); // Display image element
                  }else{
