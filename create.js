@@ -203,10 +203,10 @@ $(document).ready(function() {
     $("#oldpostal").css("background-color", "white")
     $("#oldpostal").css("color", "black")
     $("#savepostal2").css("display", "flex");
-   $("#canvas_container2").css("display", "flex");
+    $("#canvas_container2").css("display", "flex");
 
   });
-  //quando se carrega no botão Download
+  //quando se carrega no botão Download dentro do criar um postal A PARTIR DE OUTRO
   $("#downloadpostal2").on("click", function() {
     saveMyCanvas(["Postal"], ["1"]);
 

@@ -1,10 +1,6 @@
 <?php
-session_start();
 
-$str = "dbname=marianasilva user=postgres password=postgres host=localhost port=5432";
-$conn = pg_connect($str) or die ("A ligação falhou!");
 
-echo "olá, você está conectado ao php lol";
 
 if(isset($_FILES['file']['name'])){
 
@@ -34,5 +30,4 @@ if(isset($_FILES['file']['name'])){
 
 echo 0;
 
-pg_close($conn);
 ?>

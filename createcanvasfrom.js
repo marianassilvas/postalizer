@@ -25,7 +25,7 @@ function draw(){
    saveCanvas("#canvas_container2",["jpg"], ["jpg"]);
  }
  function resetMyCanvas(){
-   //resetCanvas("#canvas-container");
+
  }
 
 //quando se carrega no CREATE
@@ -54,7 +54,8 @@ function draw(){
 
 
  function updateCard(raio2, r, d) {
-   background(255);
+   
+   background(255);   //aqui tem que ir a imagem uploaded
    push();
    fill(200,0,200);
    ellipse(random(raio2,width-raio2), random(raio2,height-raio2), raio2 * 2, raio2 * 2);

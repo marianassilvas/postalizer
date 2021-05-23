@@ -3,6 +3,8 @@
   src: url('/Users/marianasilva/postalizer/webfonts/HelveticaNeue-01.ttf') format('truetype');
 }
 
+
+
 *, *:after, *:before {
   font-family: 'HelveticaNeue';
   margin: 0;
@@ -153,3 +155,7 @@ flex-direction: column;
 .imgcontainer:hover{
   background-color: black;
 }
+
+/* #defaultCanvas0{
+  display: none;
+} */
