@@ -1,73 +1,112 @@
+let width_canvas = 685;
+let height_canvas = 454;
+
+const epoca = season(new Date(), seasons);
+
+let dt = new Date();
+let time = dt.getDate() + " / " +
+  (dt.getMonth() + 1) + " / " +
+  dt.getFullYear();
 
 
-function setup(){
+function setup() {
 
-let width=685;
-let height=454;
-let can = createCanvas(width, height);
-can.parent('#canvas-container');
+
+
+  let can = createCanvas(width_canvas, height_canvas);
+  can.parent('#canvas-container');
+
+
+    loadFont('assets/blackout_midnight-webfont.ttf', updateCard);
+    textFont('blackout');
+    textSize(38); //podemos adicionar uma variável que dinamiza o tamanho de letra
+
+    for (let c = 0; c <= cols; c++) {
+      grid_cols[c] = c * width_canvas / cols;
+    }
+
+    for (let r = 0; r <= rows; r++) {
+      grid_rows[r] = r * height_canvas / rows;
+    }
+
+    noLoop();
 }
 
-function draw(){
-  // background(100, 149, 237);
-  // fill(255);
-  // ellipse(mouseX, mouseY, 250, 250);
-  // rect(150, 95, 200, 250);
-  // line(mouseX, 0, mouseX, 100);
+function draw() {
 
-  updateCard(ra, r, d);
+  // updateCard(ra, r, d, time, epoca);
 }
 
 //mensagem crate new processamento
- var raio = "";
- var from = "";
- var to = "";
+let rem = "";
+let dest = "";
+let texto = "";
 
- function processMsg(ra, r, d,) {
-   updateCard(ra, r, d);
 
- }
- function saveMyCanvas(){
-   saveCanvas("#canvas-container",["jpg"], ["jpg"]);
- }
- function resetMyCanvas(){
-   //resetCanvas("#canvas-container");
- }
+function processRita(t) {
+  //divide é um array? como diz no inspect?
+  let rt = RiTa.tokenize(t);
+  return rt;
+}
+
+function processMsg(r, d, t) {
+  //call rita
+  processRita(t);
+  //processLemma();
+
+  let split_text = splitTokens(t, [',', ' ', '.', '!', '?']);
+  processNRC(split_text);
+
+  processColor(epoca, r, g, b);
+  updateCard(r, d, t, time, epoca);
+
+  /*$('#canvas-container').css("display","block");*/
+  $('#canvas-container').css("opacity", 1);
+
+}
+
+
+function saveMyCanvas() {
+  saveCanvas("#canvas-container", ["jpg"], ["jpg"]);
+}
+
+function resetMyCanvas() {
+  //resetCanvas("#canvas-container");
+}
 
 //quando se carrega no CREATE
- $("#btncreate").click(function() {
- $('#canvas-container').css("display", "flex");
-   raio = $("#raio").val();
-   from = $("#from").val();
-   to = $("#to").val();
+$("#btncreate").click(function() {
+  $('#canvas-container').css("display", "flex");
+  rem = $("#rem").val();
+  dest = $("#dest").val();
+  texto = $("#texto").val();
 
-   console.log(raio, from, to);
-   processMsg(raio, 'from ' + from, 'dear ' + to);
-   updateCard(raio, from, to);
- });
+  console.log(texto, rem, dest, time, epoca);
+  processMsg('from ' + rem, 'dear ' + dest, texto);
+  updateCard(rem, dest, texto, time, epoca);
+});
 
 //quando se carrega no RUN AGAIN
- $("#runagainpostal").click(function() {
- $('#canvas-container').css("display", "flex");
-   raio = $("#raio").val();
-   from = $("#from").val();
-   to = $("#to").val();
+$("#runagainpostal").click(function() {
+  $('#canvas-container').css("display", "flex");
+  rem = $("#rem").val();
+  dest = $("#dest").val();
+  texto = $("#texto").val();
 
-   console.log(raio, from, to);
-   processMsg(raio, 'from ' + from, 'dear ' + to);
-   updateCard(raio, from, to);
- });
+  console.log(texto, rem, dest, time, epoca);
+  processMsg('from ' + rem, 'dear ' + dest, texto);
+  updateCard(rem, dest, texto, time, epoca);
+});
 
 
- function updateCard(raio, r, d) {
-   background(255);
-   push();
-   fill(200,0,200);
-   ellipse(random(raio,width-raio), random(raio,height-raio), raio * 2, raio * 2);
-   pop();
-
-   textSize(40);
-   text(r,0,20);
-   text(d, 0, 50);
-
- }
+// function updateCard(t, r, d) {
+//   background(255);
+//   // push();
+//   // fill(200,0,200);
+//   // // ellipse(random(raio,width-raio), random(raio,height-raio), raio * 2, raio * 2);
+//   // pop();
+//
+//   textSize(40);
+//   text(r, 0, 20);
+//   text(d, 0, 50);
+// }
