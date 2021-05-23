@@ -105,11 +105,17 @@ function processNRC(g) {
     let corresponde_2 = []; //onde  devia vir tipo {1,0,0,0,1,0,...}
 
     for (var h = 0; h < linha_NRC.length; h++) {
-        for (var i = 0; i < table.getColumnCount(); i++) {
-          corresponde_2[h]=linha_NRC.getString(i);
-          print(corresponde_2);
+        for (var i = 1; i < table.getColumnCount(); i++) {
+          corresponde_2.push(linha_NRC[h].getString(i));
         }
     }
+    print('corresponde1',corresponde_2); //está {1,0,1,0,0,0,0} mas de todas as palavras tudo junto
+
+    let corresponde_final = [];
+
+    //cada entrada desta ser de 10 em 10 da corresponde_2
+
+
 
     /*  for (var i = 0; i < corresponde.length; i++) {
         linha_NRC = table.getRow(1);
@@ -266,5 +272,6 @@ function writeText(tt) {
 
   } else {
     console.log('texto de uma linha');
+    text(break_text, grid_cols[0], grid_rows[6]);
   }
 }
