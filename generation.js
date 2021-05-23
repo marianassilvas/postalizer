@@ -20,13 +20,13 @@ function setup() {
 
   loadFont('assets/blackout_midnight-webfont.ttf', updateCard);
   textFont('blackout');
-  textSize(35); //podemos adicionar uma variável que dinamiza o tamanho de letra
+  textSize(38); //podemos adicionar uma variável que dinamiza o tamanho de letra
 
-  for (let c = 0; c < cols; c++) {
+  for (let c = 0; c <= cols; c++) {
     grid_cols[c] = c * width_canvas / cols;
   }
 
-  for (let r = 0; r < rows; r++) {
+  for (let r = 0; r <= rows; r++) {
     grid_rows[r] = r * height_canvas / rows;
   }
 
@@ -54,22 +54,20 @@ function updateCard(raio, r, d, t, dt, epoca) {
     }
   }
 
-  text(r, grid_cols[3], grid_rows[15]); //remetente
-  text(d, grid_cols[0], grid_rows[2]); //destinatário
-  text(dt, grid_cols[4], grid_rows[2]); //data
+  textSize(35);
+  text(r, grid_cols[3], grid_rows[16]); //remetente
+  text(d, grid_cols[0], grid_rows[1]); //destinatário
+  text(dt, grid_cols[4], grid_rows[1]); //data
 
   push();
-
-  processNRC();
-
-  textSize(60);
+  textSize(55);
+  writeText(t);
   //text(t, grid_cols[1], grid_rows[7]);
   //let tamanho_texto;
   //tamanho_texto = textWidth(t);
-
-  writeText(t);
-
   pop();
+
+  processNRC();
 
   let cor = processColor(epoca);
 
@@ -83,19 +81,46 @@ function updateCard(raio, r, d, t, dt, epoca) {
 
 function processNRC(g) {
   //print(t);
-  let column = table.getColumn('English (en)');
+  let column = table.getColumn('English (en)'); //array com nomes da tabela
+  let textoNRC = g; //array de strings de palavras da msg
   //print(column);
-  let textoNRC = g;
+
+  let corresponde = []; //array que vai receber palavras da msg que existem na tabela
+  let linha_NRC = []; //rows correspondentes a cada palavra que existe do NRC na msg
+
 
   if (typeof(textoNRC) != 'undefined') {
 
     for (var i = 0; i < column.length; i++) {
       for (var h = 0; h < textoNRC.length; h++) {
-        if (textoNRC[h] === column[i]) console.log(textoNRC[h]);
+        if (textoNRC[h] === column[i]) {
+          corresponde.push(column[i]); //palavras que correspondem
+          linha_NRC.push(table.getRow(i)); //rows correspondentes
+        }
       }
     }
+    console.log(linha_NRC, 'índice');
+    console.log(corresponde, 'palavras');
+
+    let corresponde_2 = []; //onde  devia vir tipo {1,0,0,0,1,0,...}
+
+    for (var h = 0; h < linha_NRC.length; h++) {
+        for (var i = 0; i < table.getColumnCount(); i++) {
+          corresponde_2[h]=linha_NRC.getString(i);
+          print(corresponde_2);
+        }
+    }
+
+    /*  for (var i = 0; i < corresponde.length; i++) {
+        linha_NRC = table.getRow(1);
+        console.log(linha_NRC, 'linha correspondente');
+      } */
+
+
   }
+
 }
+
 
 function processColor(c) { //cores consoante a estação do ano
 
@@ -123,112 +148,123 @@ function processColor(c) { //cores consoante a estação do ano
 
 }
 
-function writeText(tt){
+function writeText(tt) {
 
-  let texto=tt;
-  let linha1=texto;
-  let linha2, linha3, linha4, linha5, linha6;
-  let tamanho, tamanho1, tamanho2, tamanho3, tamanho4, tamanho5, tamanho6;
-  let l3,l4,l5,l6;
+  let break_text = tt; //texto que recebo
 
-  tamanho=textWidth(texto);
-  tamanho1=textWidth(linha1);
+  let linha = [];
+  let tamanho = [];
+  var gt, ht, jt, kt, lt;
 
-  if(tamanho>=width_canvas){
-    let g=0;
-    while((tamanho1>=width_canvas)&&(linha1.length()>0)){
-      linha1=texto.substring(0,(texto.length()-g));
-      tamanho1=textWidth(linha1);
-      g++;
+  var wtf = [];
+
+  linha[0] = break_text; //vai ser as linhas. a primeira começa por ser igual ao texto que recebo
+
+  tamanho[0] = textWidth(break_text);
+  tamanho[1] = textWidth(linha[0]);
+
+  //console.log(tamanho[1], tamanho[0]);
+
+  if (tamanho[0] >= width_canvas) {
+
+    var gt = 0;
+    while ((tamanho[1] >= width_canvas) && (textWidth(linha[0]) > 0)) {
+      linha[0] = break_text.substring(0, (textWidth(break_text) - gt));
+      tamanho[1] = textWidth(linha[0]);
+      gt++;
     }
 
-    linha2=texto.substring((texto.length()-(g-1)),texto.length()); //def. linha2
-    tamanho2=textWidth(linha2);
+    linha[1] = break_text.substring((textWidth(break_text) - (gt - 1)), textWidth(break_text)); //def. linha2
+    tamanho[2] = textWidth(linha[1]);
 
-    let h=0;
-    while((tamanho2>=width_canvas)&&(linha2.length()>0)){
-      linha2=texto.substring((texto.length()-(g-1)),texto.length()-h); //NOVA LINHA2
-      tamanho2=textWidth(linha2);
-      h++;
+    var ht = 0;
+    while ((tamanho[2] >= width_canvas) && (textWidth(linha[1]) > 0)) {
+      linha[1] = break_text.substring((textWidth(break_text) - (gt - 1)), textWidth(break_text) - ht); //NOVA LINHA2
+      tamanho[2] = textWidth(linha[1]);
+      ht++;
     }
 
-    if((linha2.charAt(linha2.length()-1))!=(texto.charAt(texto.length()-1))){
-      linha3=texto.substring((texto.length()-(h-1)), texto-length); //def. linha3
-      tamanho3=textWidth(linha3);
-      l3=1;
+    if ((linha[1].charAt(linha[1].length - 1)) != (break_text.charAt(break_text.length - 1))) {
+      linha[2] = break_text.substring((textWidth(break_text) - (ht - 1)), textWidth(break_text)); //DEF. Linha3
+      tamanho[3] = textWidth(linha[2]);
+      wtf[0] = 1;
 
-      int j=0;
-      while((tamanho3>=width_canvas)&&(linha3.length()>0)){
-        linha3=texto.substring((texto.length()-(h-1)), texto.length()-j); //NOVA LINHA3
-        tamanho3=textWidth(linha3);
-        j++;
+      var jt = 0;
+      while ((tamanho[3] >= width_canvas) && (textWidth(linha[2]) > 0)) {
+        linha[2] = break_text.substring((textWidth(break_text) - (ht - 1)), textWidth(break_text) - jt); //NOVA LINHA3
+        tamanho[3] = textWidth(linha[2]);
+        jt++;
       }
 
-      if(linha3.charAt(linha3.length()-1)!=texto.charAt(texto.length()-1)){
-        linha4=texto.substring(texto.length()-(j-1),texto.length()); //def.linha4
-        tamanho4=textWidth(linha4);
-        l4=1;
+      if ((linha[2].charAt(linha[2].length - 1)) != (break_text.charAt(break_text.length - 1))) {
+        linha[3] = break_text.substring((textWidth(break_text) - (jt - 1)), textWidth(break_text)); //DEF. Linha4
+        tamanho[4] = textWidth(linha[3]);
+        wtf[1] = 1;
 
-        let k=0;
-        while((tamanho4>=width_canvas)&&(linha4.length()>0)){
-          linha4=texto.substring((texto.length()-(j-1)),texto.length()-k); //NOVA LINHA4
-          tamanho4=textWidth(linha4);
-          k++;
+        var kt = 0;
+        while ((tamanho[4] >= width_canvas) && (textWidth(linha[3]) > 0)) {
+          linha[3] = break_text.substring((textWidth(break_text) - (jt - 1)), textWidth(break_text) - kt); //NOVA LINHA4
+          tamanho[4] = textWidth(linha[3]);
+          kt++;
         }
 
-        if((linha4.charAt(linha4.length()-1))!=(texto.charAt(texto.length()-1))){
-          linha5=texto.substring((texto.length()-(k-1)),texto.length());
-          tamanho5=textWidth(linha5);
-          l5=1;
+        if ((linha[3].charAt(linha[3].length - 1)) != (break_text.charAt(break_text.length - 1))) {
+          linha[4] = break_text.substring((textWidth(break_text) - (kt - 1)), textWidth(break_text)); //DEF. Linha5
+          tamanho[5] = textWidth(linha[4]);
+          wtf[2] = 1;
 
-          int l=0;
-          while((tamanho5>=width_canvas)&&(linha5.length()>0)){
-            linha5=texto.substring(texto.length()-(k-1),texto.length()-l); //NOVA LINHA5
-            tamanho5=textWidth(linha5);
-            l++;
+          var lt = 0;
+          while ((tamanho[5] >= width_canvas) && (textWidth(linha[4]) > 0)) {
+            linha[4] = break_text.substring((textWidth(break_text) - (kt - 1)), textWidth(break_text) - lt); //NOVA LINHA5
+            tamanho[5] = textWidth(linha[4]);
+            lt++;
           }
 
-          if((linha5.charAt(linha5.length()-1))!=(texto.charAt(texto.length()-1))){
-            linha6=texto.substring((texto.length()-(l-1)), texto-length()); //def.linha6
-            tamanho6=textWidth(linha6);
-            l6=1;
+          if ((linha[4].charAt(linha[4].length - 1)) != (break_text.charAt(break_text.length - 1))) {
+            linha[5] = break_text.substring((textWidth(break_text) - (kt - 1)), textWidth(break_text)); //DEF. Linha6
+            tamanho[6] = textWidth(linha[5]);
+            wtf[3] = 1;
+
           }
         }
+
       }
     }
 
-    //desenhar texto + trim
-    linha1=trim(linha1);
-    text(linha1, grid_cols[0], grid_rows[4]);
 
-    if(linha2.length()>0){
-      linha2=trim(linha2);
-      text(linha2, grid_cols[0], grid_rows[6]);
+
+    //------------- ESCREVER --------------------------//
+
+    linha[0] = trim(linha[0]);
+    text(linha[0], grid_cols[0], grid_rows[4]);
+
+    if (textWidth(linha[1]) > 0) {
+      linha[1] = trim(linha[1]);
+      text(linha[1], grid_cols[0], grid_rows[6]);
     }
 
-    if(l3==1){
-      linha3=trim(linha3);
-      text(linha3, grid_cols[0], grid_rows[8]);
+    if (wtf[0] == 1) {
+      linha[2] = trim(linha[2]);
+      text(linha[2], grid_cols[0], grid_rows[8]);
     }
 
-    if(l4==1){
-      linha4=trim(linha4);
-      text(linha4, grid_cols[0], grid_rows[10]);
+    if (wtf[1] == 1) {
+      linha[3] = trim(linha[3]);
+      text(linha[3], grid_cols[0], grid_rows[10]);
     }
 
-    if(l5==1){
-      linha5=trim(linha5);
-      text(linha5, grid_cols[0], grid_rows[12]);
+    if (wtf[2] == 1) {
+      linha[4] = trim(linha[4]);
+      text(linha[4], grid_cols[0], grid_rows[12]);
     }
 
-    if(l6==1){
-      linha6=trim(linha6);
-      text(linha6, grid_cols[0], grid_rows[14]);
+    if (wtf[3] == 1) {
+      linha[5] = trim(linha[5]);
+      text(linha[5], grid_cols[0], grid_rows[14]);
     }
 
 
-  }else{
-    text(texto, grid_cols[0], grid_rows[6]);
+  } else {
+    console.log('texto de uma linha');
   }
-
 }

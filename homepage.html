@@ -77,8 +77,9 @@
 		//call rita
 		processRita(t);
 		//processLemma();
-		let splitText = splitTokens(t,[' ', ',']);
-		processNRC(splitText);
+
+		let split_text  = splitTokens(t, [',', ' ', '.', '!', '?']);
+		processNRC(split_text);
 
 		processColor(epoca, r, g, b);
 		updateCard(ra, r, d, t, time, epoca);
