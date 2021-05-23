@@ -113,14 +113,13 @@ function processNRC(g) {
 
     let corresponde_final = [];
 
-    //cada entrada desta ser de 10 em 10 da corresponde_2
+    for (var i=0; i<corresponde.length;i++){
 
-
-
-    /*  for (var i = 0; i < corresponde.length; i++) {
-        linha_NRC = table.getRow(1);
-        console.log(linha_NRC, 'linha correspondente');
-      } */
+      corresponde_final[i]=corresponde_2.splice(0,10);
+      console.log('por cada palavra',corresponde_final);
+      console.log('primeira palavra:',corresponde_final[0]);
+      console.log('primeira emoção primeira palavra:',corresponde_final[0][0]);
+    }
 
 
   }
