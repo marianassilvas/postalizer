@@ -94,11 +94,14 @@
 #canvas-container {
   margin-top: 10px;
   display: none;
+  border: 1px solid black;
+  width: 686px;
 }
 
 #canvas_container2 {
   margin-top: 10px;
   display: none;
+  border: 1px solid black;
 }
 
 /* ------------FORM CRIAR NOVO---------- */

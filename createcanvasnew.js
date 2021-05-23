@@ -11,8 +11,6 @@ let time = dt.getDate() + " / " +
 
 function setup() {
 
-
-
   let can = createCanvas(width_canvas, height_canvas);
   can.parent('#canvas-container');
 
@@ -44,7 +42,6 @@ let texto = "";
 
 
 function processRita(t) {
-  //divide é um array? como diz no inspect?
   let rt = RiTa.tokenize(t);
   return rt;
 }
@@ -71,7 +68,6 @@ function saveMyCanvas() {
 }
 
 function resetMyCanvas() {
-  //resetCanvas("#canvas-container");
 }
 
 //quando se carrega no CREATE

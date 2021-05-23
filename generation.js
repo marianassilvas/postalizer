@@ -66,6 +66,15 @@ function preload() {
 function updateCard(r, d, t, dt, epoca) {
 
   background(220);
+
+//caso tenha imagem--
+background(255);
+if (pathToNewImage != 0) {
+  loadImage(pathToNewImage, img => {
+    image(img, 0, 0, 685, 454);
+  });
+}
+//--------------
   noStroke();
 
   for (let c = 0; c < cols; c++) {
@@ -73,6 +82,7 @@ function updateCard(r, d, t, dt, epoca) {
       push();
       //stroke(255, 0, 0);
       noStroke();
+      strokeWeight(0);
       rect(grid_cols[c], grid_rows[r], width / cols, height / rows);
       pop();
     }
@@ -81,12 +91,19 @@ function updateCard(r, d, t, dt, epoca) {
   strokeWeight(2);
   desenhaFormas(p1, p2, p3, p4, p5);
 
+  r="from"+ " "+r;
+  d="dear"+ " "+d+",";
+
   textSize(35);
+  push();
+  noStroke();
   text(r, grid_cols[3], grid_rows[16]); //remetente
   text(d, grid_cols[0], grid_rows[1]); //destinatário
   text(dt, grid_cols[4], grid_rows[1]); //data
+  pop();
 
   push();
+  noStroke();
   textSize(55);
   writeText(t);
   pop();
@@ -417,7 +434,7 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
     }
 
     if (p2__ == anger_soma && p2__ > 0) { //desenho anger
-
+push();
       var numpontos = p2__ + 3;
       var x, y, px, py;
       var raio1 = 50;
@@ -434,13 +451,13 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
           px = x + raio2 * cos(i * (2 * PI / numpontos));
           py = y + raio2 * sin(i * (2 * PI / numpontos));
         }
-        push();
+
         stroke(random(100, 255), 0, 0);
         vertex(px, py);
-        pop();
+
       }
       endShape(CLOSE);
-
+pop();
     } else if (p2__ == fear_soma && p2__ > 0) { //desenho fear
 
       var numpontos = p2__ + 3;
@@ -451,7 +468,7 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
       y = random(height);
 
       push();
-      fill(0);
+      fill(63,5,128);
       ellipse(x, y, raio1 * 2, raio1 * 2);
       pop();
 
@@ -475,6 +492,7 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
       for (var i = 0; i < p3__; i++) {
         push();
         noFill();
+        stroke(127,0,79);
         strokeWeight(13);
         var x = random(width);
         var y = random(height);
@@ -494,14 +512,16 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
       y = random(height);
 
       for (var i = 0; i < p3__; i++) {
-
+push();
+stroke(204,255,0);
+strokeWeight(10);
         line(x, y, x + l1, y - l2);
         line(x + l1, y - l2, x + l1 * 2, y + l2);
         line(x + l1 * 2, y + l2, x + l1 * 3, y - l2);
         line(x + l1 * 3, y - l2, x + l1 * 4, y + l2);
         line(x + l1 * 4, y + l2, x + l1 * 5, y - l2);
         line(x + l1 * 5, y - l2, x + l1 * 6, y + l2);
-
+pop();
       }
 
     }
@@ -513,7 +533,7 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
 
         push();
         noStroke();
-        fill(162, 42, 42);
+        fill(250, 130, 2);
 
         x = random(raio, width - raio);
         y = random(raio, height - raio);
@@ -554,11 +574,12 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
       var raio = random(20, 50);
 
       for (var i = 0; i < numpontos; i++) {
-
+        push();
         px = x + raio * cos(i * (2 * PI / numpontos));
         py = y + raio * sin(i * (2 * PI / numpontos));
         stroke(0, random(100, 255), random(100, 255));
         line(x, y, px, py);
+        pop();
       }
 
 
@@ -576,12 +597,13 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
         py = y + raio * sin(i * (2 * PI / numpontos));
         push();
         fill(random(100, 255), random(100, 255), 0);
+        stroke(39,217,61);
+        strokeWeight(10);
         vertex(px, py);
         pop();
       }
       endShape(CLOSE);
     }
-
 
 
   }
