@@ -1,14 +1,17 @@
 @font-face {
   font-family: 'HelveticaNeue';
-  src: url('/Users/marianasilva/postalizer/webfonts/HelveticaNeue-01.ttf') format('truetype');
-  src: url('/Users/marianasilva/postalizer/webfonts/HelveticaNeue-Bold-02.ttf') format('truetype');
-  src: url('/Users/marianasilva/postalizer/webfonts/HelveticaNeue-BoldItalic-04.ttf') format('truetype');
+  src: url('postalizer/webfonts/HelveticaNeue-01.ttf') format('truetype');
+  src: url('postalizer/webfonts/HelveticaNeue-Bold-02.ttf') format('truetype');
+  src: url('webfonts/HelveticaNeue-BoldItalic-04.ttf') format('truetype');
   src: url('webfonts/HelveticaNeue-01.ttf') format('truetype');
+
+ font-family: 'Goulong';
+ src: url('webfonts/Goulong.ttf') format('truetype');
 }
 
 
 *, *:after, *:before {
-  font-family: 'HelveticaNeue';
+  font-family: 'Goulong';
   /* font-weight: bold; */
   margin: 0;
   padding: 0;
@@ -119,7 +122,7 @@ svg {
   /*flex-direction: row;*/
   flex-wrap: nowrap;
   align-items: center;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
 }
 
 
