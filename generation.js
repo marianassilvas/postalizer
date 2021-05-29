@@ -54,7 +54,6 @@ var trust = [];
 var trust_int = [];
 var trust_soma = [];
 
-let limpeza = false;
 
 
 function setup() {
@@ -92,7 +91,6 @@ function updateCard(r, d, t, dt, epoca) {
   for (let c = 0; c < cols; c++) {
     for (let r = 0; r < rows; r++) {
       push();
-      //stroke(255, 0, 0);
       noStroke();
       rect(grid_cols[c], grid_rows[r], width / cols, height / rows);
       pop();
@@ -127,10 +125,7 @@ function updateCard(r, d, t, dt, epoca) {
     pop();
   }
 
-  if (limpeza) limpeza=false;
-  else limpeza=true;
-
-  print(limpeza);
+  //tirar limpeza aqui
 
 }
 
@@ -238,11 +233,11 @@ function processNRC(g) {
 
 
 
-    print(p1, 'P1 CRL!');
-    print(p2, 'P2 CRL!');
-    print(p3, 'P3 CRL!');
-    print(p4, 'P4 CRL!');
-    print(p5, 'P5 CRL!');
+    print(p1, 'P1!');
+    print(p2, 'P2!');
+    print(p3, 'P3!');
+    print(p4, 'P4!');
+    print(p5, 'P5!');
 
   }
 

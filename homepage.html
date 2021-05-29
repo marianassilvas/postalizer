@@ -49,6 +49,7 @@
 	let dest = "";
 	let texto = "";
 	const epoca = season(new Date(), seasons);
+	let split_text;
 
 	let dt = new Date();
 	let time = dt.getDate() + " / " +
@@ -74,7 +75,7 @@
 		processRita(t);
 		//processLemma();
 
-		let split_text  = splitTokens(t, [',', ' ', '.', '!', '?']);
+		split_text  = splitTokens(t, [',', ' ', '.', '!', '?']);
 		processNRC(split_text);
 
 		processColor(epoca, r, g, b);
