@@ -53,7 +53,7 @@
 }
 
 #create svg:hover>path {
-  fill: red;
+  fill: #d66e6e;
 }
 
 #create:hover>path {
@@ -144,7 +144,7 @@
   background-color: white;
   border: 1px solid #000000;
   color: black;
-  padding: 15px 32px;
+  padding: 4px 10px;
   text-align: center;
   text-decoration: none;
   font-size: 16px;
@@ -260,7 +260,6 @@
    width: 50%;
    height: 250px;
    border-radius: 3px;
-   background-color: ghostwhite;
    text-align: center;
 }
 /* Preview */

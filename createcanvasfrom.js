@@ -1,5 +1,5 @@
-let width_canvas2 = 685;
-let height_canvas2 = 454;
+let width_canvas = 685;
+let height_canvas = 454;
 
 const epoca = season(new Date(), seasons);
 
@@ -11,9 +11,15 @@ let time = dt.getDate() + " / " +
 
 function setup() {
 
-  let can2 = createCanvas(width_canvas2, height_canvas2);
+  let can2 = createCanvas(width_canvas, height_canvas);
   can2.parent('#canvas_container2');
-
+  if (pathToNewImage != 0) {
+    push();
+    loadImage(pathToNewImage, img => {
+      image(img, 0, 0, 685, 454);
+      pop();
+    });
+  }
   loadFont('assets/blackout_midnight-webfont.ttf', updateCard);
   textFont('blackout');
   textSize(38); //podemos adicionar uma variável que dinamiza o tamanho de letra
@@ -36,9 +42,9 @@ function draw() {
 }
 
 //mensagem crate new processamento
-let rem = "";
-let dest = "";
-let texto = "";
+let rem2 = "";
+let dest2 = "";
+let texto2 = "";
 
 
 function processRita(t) {
@@ -72,38 +78,42 @@ function resetMyCanvas() {}
 //quando se carrega no CREATE
 $("#btncreate2").click(function() {
   $('#canvas_container2').css("display", "flex");
-  rem = $("#from2").val();
-  dest = $("#to2").val();
-  texto = $("#raio2").val();
+  rem2 = $("#rem2").val();
+  dest2 = $("#dest2").val();
+  texto2 = $("#texto2").val();
 
-  console.log(texto, rem, dest, time, epoca);
-  processMsg('from ' + rem, 'dear ' + dest, texto);
-  updateCard(rem, dest, texto, time, epoca);
+  console.log(texto2, rem2, dest2, time, epoca);
+  processMsg('from ' + rem2, 'dear ' + dest2, texto2);
+  updateCard(rem2, dest2, texto2, time, epoca);
 });
 
 //quando se carrega no RUN AGAIN
 $("#runagainpostal2").click(function() {
   $('#canvas_container2').css("display", "flex");
-  updateCard(rem, dest, texto, time, epoca);
+  console.log(texto2, rem2, dest2, time, epoca);
+  updateCard(rem2, dest2, texto2, time, epoca);
+
 });
 
 
-function updateCard(raio2, r, d) {
-  //background(255);
-  if (pathToNewImage != 0) {
-    loadImage(pathToNewImage, img => {
-      image(img, 0, 0, 685, 454);
-    });
-
-  }
-
-  push();
-  fill(200, 0, 200);
-  ellipse(random(raio2, width - raio2), random(raio2, height - raio2), raio2 * 2, raio2 * 2);
-  pop();
-
-  textSize(40);
-  text(r, 0, 20);
-  text(d, 0, 50);
-
-}
+// function updateCard(raio2, r, d) {
+//   //background(255);
+//
+//
+//   push();
+//   fill(200, 0, 200);
+//   ellipse(random(raio2, width - raio2), random(raio2, height - raio2), raio2 * 2, raio2 * 2);
+//   pop();
+//
+//   textSize(40);
+//   text(r, 0, 20);
+//   text(d, 0, 50);
+//
+//   if (pathToNewImage != 0) {
+//     loadImage(pathToNewImage, img => {
+//       image(img, 0, 0, 685, 454);
+//     });
+//
+//   }
+//
+// }

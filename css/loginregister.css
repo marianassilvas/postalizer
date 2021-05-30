@@ -93,7 +93,7 @@
 }
 
 #loginregister svg:hover > path {
-  fill: red;
+  fill: #d66e6e;
 }
 
 #loginregister:hover > path {

@@ -67,23 +67,26 @@ function preload() {
 
 function updateCard(r, d, t, dt, epoca) {
 
-  background(220);
-
   //caso tenha imagem--
   background(255);
-  if (pathToNewImage != 0) {
-    loadImage(pathToNewImage, img => {
-      image(img, 0, 0, 685, 454);
-    });
-  }
-  //--------------
-  noStroke();
+  // if (pathToNewImage != 0) {
+  //   push();
+  //   loadImage(pathToNewImage, img => {
+  //     image(img, 0, 0, 685, 454);
+  //     pop();
+  //   });
+  // }
 
+  noStroke();
   push();
   stroke(0);
   strokeWeight(2);
+  noFill();
   rect(0, 0, 685, 454);
   pop();
+
+
+  //--------------
 
   for (let c = 0; c < cols; c++) {
     for (let r = 0; r < rows; r++) {

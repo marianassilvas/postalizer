@@ -9,7 +9,7 @@ $("#loginregister1").on("click", function() {
   if ($(".animgaveta2").height() < 71) { //quando está fechado e há click
 
     $(".animgaveta2").finish().animate({ //abre....
-      height: windowHeight * 1.34,
+      height: windowHeight * 0.42,
 
     }, 500);
 
@@ -39,7 +39,7 @@ $("#loginregister1").on("click", function() {
 
     //e enquanto está aberto, quando se passa o rato na SETA..:
     $("#loginregister1 > svg").hover(function() {
-    $("#loginregister1 svg > path").css("fill", "red");
+    $("#loginregister1 svg > path").css("fill", "#d66e6e");
       //sem o hover, volta ao normal...
     }, function() {
     $("#loginregister svg > path").css("fill", "black");
@@ -74,7 +74,7 @@ $("#loginregister1").on("click", function() {
 
     //e enquanto está fechado, quando se passa o rato na SETA..:
     $("#loginregister > svg").hover(function() {
-    $("#loginregister svg > path").css("fill", "red");
+    $("#loginregister svg > path").css("fill", "#d66e6e");
       //sem o hover, volta ao normal...
     }, function() {
     $("#loginregister svg > path").css("fill", "white");

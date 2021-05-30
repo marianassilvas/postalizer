@@ -11,7 +11,7 @@ $(document).ready(function() {
     if ($(".animgaveta1").height() < 71) { //quando está fechado e há click
 
       $(".animgaveta1").finish().animate({ //abre....
-        height: windowHeight2 * 1.3,
+        height: windowHeight2 * 0.42,
 
       }, 500);
 
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
       //e enquanto está aberto, quando se passa o rato na SETA..:
       $("#create1 > svg").hover(function() {
-        $("#create svg > path").css("fill", "red");
+        $("#create svg > path").css("fill", "#d66e6e");
         //sem o hover, volta ao normal...
       }, function() {
         $("#create svg > path").css("fill", "black");
@@ -82,7 +82,7 @@ $(document).ready(function() {
 
       //e enquanto está fechado, quando se passa o rato na SETA..:
       $("#create1 > svg").hover(function() {
-        $("#create svg > path").css("fill", "red");
+        $("#create svg > path").css("fill", "#d66e6e");
         //sem o hover, volta ao normal...
       }, function() {
         $("#create svg > path").css("fill", "white");
