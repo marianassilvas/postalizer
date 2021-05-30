@@ -10,7 +10,7 @@
   justify-content: space-around;
   align-items: center;
   border: 1px solid #000000;
-  
+
 }
 
 #create:hover {
@@ -96,7 +96,7 @@
 #canvas-container {
   margin-top: 10px;
   display: none;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
   width: 686px;
 }
 

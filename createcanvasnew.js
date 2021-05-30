@@ -15,19 +15,19 @@ function setup() {
   can.parent('#canvas-container');
 
 
-    loadFont('assets/blackout_midnight-webfont.ttf', updateCard);
-    textFont('blackout');
-    textSize(38); //podemos adicionar uma variável que dinamiza o tamanho de letra
+  loadFont('assets/blackout_midnight-webfont.ttf', updateCard);
+  textFont('blackout');
+  textSize(38); //podemos adicionar uma variável que dinamiza o tamanho de letra
 
-    for (let c = 0; c <= cols; c++) {
-      grid_cols[c] = c * width_canvas / cols;
-    }
+  for (let c = 0; c <= cols; c++) {
+    grid_cols[c] = ((c* 670) / cols)+6.5; //-20 margin
+  }
 
-    for (let r = 0; r <= rows; r++) {
-      grid_rows[r] = r * height_canvas / rows;
-    }
+  for (let r = 0; r <= rows; r++) {
+    grid_rows[r] = ((r* 439) / rows)+6.5;
+  }
 
-    noLoop();
+  noLoop();
 }
 
 function draw() {
@@ -67,8 +67,7 @@ function saveMyCanvas() {
   saveCanvas("#canvas-container", ["jpg"], ["jpg"]);
 }
 
-function resetMyCanvas() {
-}
+function resetMyCanvas() {}
 
 //quando se carrega no CREATE
 $("#btncreate").click(function() {
@@ -85,12 +84,7 @@ $("#btncreate").click(function() {
 //quando se carrega no RUN AGAIN
 $("#runagainpostal").click(function() {
   $('#canvas-container').css("display", "flex");
-  rem = $("#rem").val();
-  dest = $("#dest").val();
-  texto = $("#texto").val();
-
   console.log(texto, rem, dest, time, epoca);
-  processMsg('from ' + rem, 'dear ' + dest, texto);
   updateCard(rem, dest, texto, time, epoca);
 });
 

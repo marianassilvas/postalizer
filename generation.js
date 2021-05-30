@@ -67,22 +67,28 @@ function updateCard(r, d, t, dt, epoca) {
 
   background(220);
 
-//caso tenha imagem--
-background(255);
-if (pathToNewImage != 0) {
-  loadImage(pathToNewImage, img => {
-    image(img, 0, 0, 685, 454);
-  });
-}
-//--------------
+  //caso tenha imagem--
+  background(255);
+  if (pathToNewImage != 0) {
+    loadImage(pathToNewImage, img => {
+      image(img, 0, 0, 685, 454);
+    });
+  }
+  //--------------
   noStroke();
+
+  push();
+  stroke(0);
+  strokeWeight(2);
+  rect(0, 0, 685, 454);
+  pop();
 
   for (let c = 0; c < cols; c++) {
     for (let r = 0; r < rows; r++) {
       push();
       //stroke(255, 0, 0);
       noStroke();
-      strokeWeight(0);
+      strokeWeight(1);
       rect(grid_cols[c], grid_rows[r], width / cols, height / rows);
       pop();
     }
@@ -91,8 +97,8 @@ if (pathToNewImage != 0) {
   strokeWeight(2);
   desenhaFormas(p1, p2, p3, p4, p5);
 
-  r="from"+ " "+r;
-  d="dear"+ " "+d+",";
+  r = "from" + " " + r;
+  d = "dear" + " " + d + ",";
 
   textSize(35);
   push();
@@ -115,7 +121,9 @@ if (pathToNewImage != 0) {
   for (let a = 0; a < 2; a++) {
     push();
     fill(cor[0], cor[1], cor[2]);
-    ellipse(random(10, width_canvas - 10 * 2), random(10, height_canvas - 10 * 2), 10 * 2, 10 * 2);
+    var raio = random(10, 30);
+    ellipse(grid_cols[round(random(1, 5))],
+      grid_rows[round(random(1, 15))], raio * 2, raio * 2);
     pop();
   }
 
@@ -223,11 +231,11 @@ function processNRC(g) {
 
 
 
-    print(p1, 'P1 CRL!');
-    print(p2, 'P2 CRL!');
-    print(p3, 'P3 CRL!');
-    print(p4, 'P4 CRL!');
-    print(p5, 'P5 CRL!');
+    print(p1, 'P1!');
+    print(p2, 'P2!');
+    print(p3, 'P3!');
+    print(p4, 'P4!');
+    print(p5, 'P5!');
 
   }
 
@@ -398,130 +406,181 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
   if (typeof(p1__) != 'undefined') {
     if (p1__ == negative_soma && p1__ > 0) { //desenho negativo
 
-      let xline = random(width);
-      let yline = random(height);
+      let xline = grid_cols[round(random(1, 5))];
+      let yline = grid_rows[round(random(1, 15))];
 
       for (var i = 0; i < negative_soma; i++) {
         push();
-        let jump = random(10, 30);
-        stroke(random(100, 255), 0, 0);
-        strokeWeight(2);
+        let jump = random(10, 40);
+        stroke(random(100, 255), 0, 0, 220);
+        strokeWeight(4);
         line(xline, yline + jump * i, (xline + 260), yline + jump * i);
         pop();
       }
     } else if (p1__ == positive_soma && p1__ > 0) { //desenho positivo
 
       for (var i = 0; i < p1__; i++) {
-
+        push();
         var numpontas = 4;
         var x, y, px, py;
-        x = random(raio, width - raio);
-        y = random(raio, height - raio);
-        var raio = random(20, 50);
+        x = grid_cols[round(random(1, 5))];
+        y = grid_rows[round(random(1, 15))];
+        var raio = random(20, 70);
+        stroke(0, random(100, 255), 0);
 
         for (var j = 0; j < numpontas; j++) {
-          push();
+
           px = x + raio * cos(j * (2 * PI / numpontas));
           py = y + raio * sin(j * (2 * PI / numpontas));
-          stroke(0, random(100, 255), 0);
-          strokeWeight(2);
+          strokeWeight(4);
           line(x, y, px, py);
-          pop();
+
         }
+        pop();
 
       }
 
     }
 
     if (p2__ == anger_soma && p2__ > 0) { //desenho anger
-push();
-      var numpontos = p2__ + 3;
-      var x, y, px, py;
-      var raio1 = 50;
-      var raio2 = 10;
-      x = random(width);
-      y = random(height);
 
-      beginShape();
-      for (var i = 0; i < numpontos; i++) {
-        if (i % 2 == 0) {
-          px = x + raio1 * cos(i * (2 * PI / numpontos));
-          py = y + raio1 * sin(i * (2 * PI / numpontos));
-        } else {
-          px = x + raio2 * cos(i * (2 * PI / numpontos));
-          py = y + raio2 * sin(i * (2 * PI / numpontos));
-        }
+      var numpontos;
+      var pares = [6, 8, 10, 12, 14, 16, 18];
+      var impares = [5, 7, 9, 11, 13, 15, 17];
 
-        stroke(random(100, 255), 0, 0);
-        vertex(px, py);
-
+      if (p2__ % 2 == 0) {
+        numpontos = p2__ + pares[round(random(6))];
+      } else {
+        numpontos = p2__ + impares[round(random(6))];
       }
-      endShape(CLOSE);
-pop();
+
+      for (var t = 0; t < p2__; t++) {
+        push();
+        var x, y, px, py;
+        var raio2 = round(random(2, 30));
+        var raio1 = raio2 * 4;
+        x = grid_cols[round(random(1, 5))];
+        y = grid_rows[round(random(1, 15))];
+
+        beginShape();
+        for (var i = 0; i < numpontos; i++) {
+          if (i % 2 == 0) {
+            px = x + raio1 * cos(i * (2 * PI / numpontos));
+            py = y + raio1 * sin(i * (2 * PI / numpontos));
+          } else {
+            px = x + raio2 * cos(i * (2 * PI / numpontos));
+            py = y + raio2 * sin(i * (2 * PI / numpontos));
+          }
+
+          fill(random(100, 255), 0, 0, 220);
+          vertex(px, py);
+
+        }
+        endShape(CLOSE);
+        pop();
+      }
     } else if (p2__ == fear_soma && p2__ > 0) { //desenho fear
 
-      var numpontos = p2__ + 3;
-      var x, y, px, py;
-      var raio1 = 50;
-      var raio2 = 10;
-      x = random(width);
-      y = random(height);
+      var numpontos;
+      var pares = [6, 8, 10, 12, 14, 16, 18];
+      var impares = [5, 7, 9, 11, 13, 15, 17];
 
-      push();
-      fill(63,5,128);
-      ellipse(x, y, raio1 * 2, raio1 * 2);
-      pop();
-
-      beginShape();
-      for (var i = 0; i < numpontos; i++) {
-        if (i % 2 == 0) {
-          px = x + raio1 * cos(i * (2 * PI / numpontos));
-          py = y + raio1 * sin(i * (2 * PI / numpontos));
-        } else {
-          px = x + raio2 * cos(i * (2 * PI / numpontos));
-          py = y + raio2 * sin(i * (2 * PI / numpontos));
-        }
-        vertex(px, py);
+      if (p2__ % 2 == 0) {
+        numpontos = p2__ + pares[round(random(6))];
+      } else {
+        numpontos = p2__ + impares[round(random(6))];
       }
-      endShape(CLOSE);
 
+      for (var t = 0; t < p2__; t++) {
+        push();
+        var x, y, px, py;
+        var raio2 = round(random(2, 20));
+        var raio1 = raio2 * 4;
+        x = grid_cols[round(random(1, 5))];
+        y = grid_rows[round(random(1, 15))];
+
+        fill(random(40, 70), random(15), random(130, 170), 210);
+        ellipse(x, y, raio1 * 2, raio1 * 2);
+        pop();
+
+        beginShape();
+        for (var i = 0; i < numpontos; i++) {
+          if (i % 2 == 0) {
+            px = x + raio1 * cos(i * (2 * PI / numpontos));
+            py = y + raio1 * sin(i * (2 * PI / numpontos));
+          } else {
+            px = x + raio2 * cos(i * (2 * PI / numpontos));
+            py = y + raio2 * sin(i * (2 * PI / numpontos));
+          }
+          vertex(px, py);
+        }
+        endShape(CLOSE);
+      }
     }
 
     if (p3__ == disgust_soma && p3__ > 0) { //desenho disgust
 
+      /*  for (var i = 0; i < p3__; i++) {
+          push();
+          noFill();
+          stroke(127, 0, 79);
+          strokeWeight(4);
+          var x = grid_cols[round(random(1, 5))];
+          var y = grid_rows[round(random(1, 15))];
+          var raio = random(40, 90);
+          ellipse(x, y, raio * 2, raio * 2);
+          pop();
+
+        }  */
+
+      let r;
+      let r2;
+
       for (var i = 0; i < p3__; i++) {
         push();
-        noFill();
-        stroke(127,0,79);
-        strokeWeight(13);
-        var x = random(width);
-        var y = random(height);
-        var raio = random(40, 90);
-        ellipse(x, y, raio * 2, raio * 2);
+        r = width * random(0.02, 0.08);
+        r2 = width * random(0.02, 0.08);
+
+        noStroke();
+        fill(random(100, 122), random(100, 130), random(100, 128));
+        translate(grid_cols[round(random(1, 5))], grid_rows[round(random(1, 15))]);
+        beginShape();
+        vertex(0, -r)
+        quadraticVertex(r, -r, r, 0);
+        quadraticVertex(r2, r2, 0, r2);
+        quadraticVertex(-r2, r2, -r2, 0);
+        quadraticVertex(-r, -r, 0, -r);
+        endShape();
         pop();
-
       }
-
 
     } else if (p3__ == antecipation_soma && p3__ > 0) { //desenho antecipation
 
       var x, y;
-      var l1 = 50;
-      var l2 = 20;
-      x = random(width);
-      y = random(height);
+      var l2;
+      var l1;
+
+      x = grid_cols[round(random(1, 4))];
+      y = grid_rows[round(random(1, 13))];
 
       for (var i = 0; i < p3__; i++) {
-push();
-stroke(204,255,0);
-strokeWeight(10);
+        push();
+        stroke(204, 255, 0, 220);
+        strokeWeight(4);
+
+        l2 = round(random(5, 30));
+        l1 = l2 * 4;
+
         line(x, y, x + l1, y - l2);
         line(x + l1, y - l2, x + l1 * 2, y + l2);
         line(x + l1 * 2, y + l2, x + l1 * 3, y - l2);
         line(x + l1 * 3, y - l2, x + l1 * 4, y + l2);
         line(x + l1 * 4, y + l2, x + l1 * 5, y - l2);
         line(x + l1 * 5, y - l2, x + l1 * 6, y + l2);
-pop();
+
+        x += random(10, 40);
+        y += random(10, 40);
+        pop();
       }
 
     }
@@ -533,11 +592,13 @@ pop();
 
         push();
         noStroke();
-        fill(250, 130, 2);
 
-        x = random(raio, width - raio);
-        y = random(raio, height - raio);
-        var raio = random(20, 50);
+        fill(random(230, 255), random(10, 30), random(120, 130), random(230, 255));
+
+        x = grid_cols[round(random(1, 5))];
+        y = grid_rows[round(random(1, 15))];
+
+        var raio = random(20, 90);
 
         arc(x, y, raio * 2, raio * 2, 0, PI, PIE);
 
@@ -551,10 +612,10 @@ pop();
 
         push();
         noStroke();
-        fill(0, 0, 255);
+        fill(0, 0, random(100, 255), random(200, 255));
 
-        x = random(raio, width - raio);
-        y = random(raio, height - raio);
+        x = grid_cols[round(random(1, 5))];
+        y = grid_rows[round(random(1, 15))];
         var raio = random(20, 50);
 
         arc(x, y, raio * 2, raio * 2, PI, 2 * PI, PIE);
@@ -567,42 +628,49 @@ pop();
 
     if (p5__ == surprise_soma && p5__ > 0) { //desenho surprise
 
-      var numpontos = p5__ + 3;
+      var numpontos_surprise = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+      var numpontos = p5__ + numpontos_surprise[round(random(12))];
       var x, y, px, py;
-      x = random(width);
-      y = random(height);
-      var raio = random(20, 50);
+      var raio;
 
-      for (var i = 0; i < numpontos; i++) {
-        push();
-        px = x + raio * cos(i * (2 * PI / numpontos));
-        py = y + raio * sin(i * (2 * PI / numpontos));
-        stroke(0, random(100, 255), random(100, 255));
-        line(x, y, px, py);
-        pop();
+      for (var i = 0; i < p5__; i++) {
+        x = grid_cols[round(random(1, 5))];
+        y = grid_rows[round(random(1, 15))];
+        raio = random(20, 150);
+
+
+        for (var h = 0; h < numpontos; h++) {
+          push();
+          strokeWeight(4);
+          stroke(255, random(100, 150), random(0, 20), random(210, 255));
+          px = x + raio * cos(h * (2 * PI / numpontos));
+          py = y + raio * sin(h * (2 * PI / numpontos));
+          line(x, y, px, py);
+          pop();
+        }
       }
-
 
     } else if (p5__ == trust_soma && p5__ > 0) { //desenho trust
 
-      var numpontos = p5__ + 3;
+      var pontos_trust = [3, 4, 5, 6, 7, 8]
+      var numpontos = p5__ + pontos_trust[round(random(6))];
       var x, y, px, py;
-      var raio = random(20, 50);
-      x = random(raio, width - raio);
-      y = random(raio, height - raio);
+      var raio = random(20, 70);
+      push();
+      for (var i = 0; i < p5__; i++) {
+        x = grid_cols[round(random(1, 5))];
+        y = grid_rows[round(random(1, 15))];
+        beginShape();
+        for (var j = 0; j < numpontos; j++) {
+          px = x + raio * cos(j * (2 * PI / numpontos));
+          py = y + raio * sin(j * (2 * PI / numpontos));
+          fill(255, 255, 0);
+          vertex(px, py);
+        }
+        endShape(CLOSE);
 
-      beginShape();
-      for (var i = 0; i < numpontos; i++) {
-        px = x + raio * cos(i * (2 * PI / numpontos));
-        py = y + raio * sin(i * (2 * PI / numpontos));
-        push();
-        fill(random(100, 255), random(100, 255), 0);
-        stroke(39,217,61);
-        strokeWeight(10);
-        vertex(px, py);
-        pop();
       }
-      endShape(CLOSE);
+      pop();
     }
 
 

@@ -1,0 +1,19 @@
+@font-face {
+  font-weight: bold;
+  font-family: 'HelveticaNeue';
+  src: url('webfonts/HelveticaNeue-01.ttf') format('truetype');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'HelveticaNeue';
+}
+
+h1 {
+  font-family: 'HelveticaNeue';
+}
+
+#texto {
+  width: 400px;
+}

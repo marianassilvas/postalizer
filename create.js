@@ -11,7 +11,7 @@ $(document).ready(function() {
     if ($(".animgaveta1").height() < 71) { //quando está fechado e há click
 
       $(".animgaveta1").finish().animate({ //abre....
-        height: windowHeight2 * 1.34,
+        height: windowHeight2 * 1.3,
 
       }, 500);
 
