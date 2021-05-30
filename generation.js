@@ -51,6 +51,8 @@ var trust = [];
 var trust_int = [];
 var trust_soma = [];
 
+let leftovers; //tolerância do sistema
+
 
 function setup() {
 
@@ -118,12 +120,16 @@ function updateCard(r, d, t, dt, epoca) {
 
   let cor = processColor(epoca);
 
-  for (let a = 0; a < 2; a++) {
+  let posicao_tolx = grid_cols[round(random(1, 5))];
+  let posicao_toly = grid_rows[round(random(1, 15))];
+
+  for (let a = 0; a < leftovers; a++) {
     push();
-    fill(cor[0], cor[1], cor[2]);
+    fill(cor[0], cor[1], cor[2], 200);
     var raio = random(10, 30);
-    ellipse(grid_cols[round(random(1, 5))],
-      grid_rows[round(random(1, 15))], raio * 2, raio * 2);
+    ellipse(posicao_tolx, posicao_toly, raio, raio * 2);
+    stroke(random(80,150),44,18);
+    line(posicao_tolx, posicao_toly + 5, posicao_tolx, posicao_toly + random(30,50));
     pop();
   }
 
@@ -171,8 +177,8 @@ function processNRC(g) {
     console.log('primeira palavra:', corresponde_emotions[0]);
     console.log('segunda palavra:', corresponde_emotions[1]);
 
-    let leftovers; //tolerância do sistema
-
+    leftovers = textoNRC.length - corresponde_palavras.length;
+    print(leftovers, 'leftovers');
 
 
     //var somaMarota =  0;
@@ -408,15 +414,15 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
 
       let xline = grid_cols[round(random(1, 5))];
       let yline = grid_rows[round(random(1, 15))];
+      push();
+      stroke(random(100, 255), 0, 0, 220);
 
-      for (var i = 0; i < negative_soma; i++) {
-        push();
+      for (var i = 0; i < negative_soma * 2; i++) {
         let jump = random(10, 40);
-        stroke(random(100, 255), 0, 0, 220);
         strokeWeight(4);
-        line(xline, yline + jump * i, (xline + 260), yline + jump * i);
-        pop();
+        line(xline, yline + jump * i, (xline + random(60, 150)), yline + jump * i);
       }
+      pop();
     } else if (p1__ == positive_soma && p1__ > 0) { //desenho positivo
 
       for (var i = 0; i < p1__; i++) {
@@ -457,7 +463,7 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
       for (var t = 0; t < p2__; t++) {
         push();
         var x, y, px, py;
-        var raio2 = round(random(2, 30));
+        var raio2 = round(random(2, 40));
         var raio1 = raio2 * 4;
         x = grid_cols[round(random(1, 5))];
         y = grid_rows[round(random(1, 15))];
@@ -472,7 +478,7 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
             py = y + raio2 * sin(i * (2 * PI / numpontos));
           }
 
-          fill(random(100, 255), 0, 0, 220);
+          fill(255, 0, 0, 220);
           vertex(px, py);
 
         }
@@ -540,15 +546,16 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
         push();
         r = width * random(0.02, 0.08);
         r2 = width * random(0.02, 0.08);
+        cinza = random(80, 120);
 
         noStroke();
-        fill(random(100, 122), random(100, 130), random(100, 128));
+        fill(cinza, cinza, random(120, 150));
         translate(grid_cols[round(random(1, 5))], grid_rows[round(random(1, 15))]);
         beginShape();
         vertex(0, -r)
         quadraticVertex(r, -r, r, 0);
-        quadraticVertex(r2, r2, 0, r2);
-        quadraticVertex(-r2, r2, -r2, 0);
+        quadraticVertex(r, r, 0, r);
+        quadraticVertex(-r, r, -r, 0);
         quadraticVertex(-r, -r, 0, -r);
         endShape();
         pop();
@@ -568,18 +575,30 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
         stroke(204, 255, 0, 220);
         strokeWeight(4);
 
-        l2 = round(random(5, 30));
+        l2 = round(random(5, 50));
         l1 = l2 * 4;
 
+        var lr1 = random(4, 30);
+        var lr2 = random(4, 50);
+        var lr3 = random(4, 30);
+        var lr4 = random(4, 60);
+        var lr5 = random(4, 30);
+        var lr6 = random(4, 50);
+        var lr7 = random(4, 30);
+        var lr8 = random(4, 60);
+        var lr9 = random(4, 20);
+        var lr10 = random(4, 40);
+
+
         line(x, y, x + l1, y - l2);
-        line(x + l1, y - l2, x + l1 * 2, y + l2);
-        line(x + l1 * 2, y + l2, x + l1 * 3, y - l2);
-        line(x + l1 * 3, y - l2, x + l1 * 4, y + l2);
-        line(x + l1 * 4, y + l2, x + l1 * 5, y - l2);
-        line(x + l1 * 5, y - l2, x + l1 * 6, y + l2);
+        line(x + l1, y - l2, x + (l1 * 2) + lr1, y + l2 + lr2);
+        line(x + (l1 * 2) + lr1, y + l2 + lr2, x + (l1 * 2) + lr1 + lr3, y - l2 - lr4);
+        line(x + (l1 * 2) + lr1 + lr3, y - l2 - lr4, x + (l1 * 2) + lr1 + lr3 + lr5, y + l2 + lr6);
+        line(x + (l1 * 2) + lr1 + lr3 + lr5, y + l2 + lr6, x + (l1 * 2) + lr1 + lr3 + lr5 + lr7, y - l2 - lr8);
+        line(x + (l1 * 2) + lr1 + lr3 + lr5 + lr7, y - l2 - lr8, x + (l1 * 2) + lr1 + lr3 + lr5 + lr7 + lr9, y + l2 + lr10);
 
         x += random(10, 40);
-        y += random(10, 40);
+        y += random(20, 50);
         pop();
       }
 
@@ -593,7 +612,7 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
         push();
         noStroke();
 
-        fill(random(230, 255), random(10, 30), random(120, 130), random(230, 255));
+        fill(random(245, 255), random(10, 30), random(120, 130), random(230, 255));
 
         x = grid_cols[round(random(1, 5))];
         y = grid_rows[round(random(1, 15))];
@@ -664,7 +683,7 @@ function desenhaFormas(p1_, p2_, p3_, p4_, p5_) {
         for (var j = 0; j < numpontos; j++) {
           px = x + raio * cos(j * (2 * PI / numpontos));
           py = y + raio * sin(j * (2 * PI / numpontos));
-          fill(255, 255, 0);
+          fill(255, random(220, 255), 0);
           vertex(px, py);
         }
         endShape(CLOSE);
